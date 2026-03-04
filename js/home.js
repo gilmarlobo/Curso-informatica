@@ -1,0 +1,126 @@
+const state = {
+    modulos: [],
+    moduloAtual: ""
+};
+
+function escapeHtml(value) {
+    return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#39;");
+}
+
+async function carregarUsuario() {
+    if (!window._supabase) {
+        return;
+    }
+
+    const { data: { session } } = await window._supabase.auth.getSession();
+    if (!session) {
+        window.location.href = "index.html";
+        return;
+    }
+
+    const { data: perfil } = await window._supabase
+        .from("profiles")
+        .select("nome")
+        .eq("id", session.user.id)
+        .single();
+
+    document.getElementById("user-name").innerText = perfil?.nome || "Aluno";
+}
+
+async function carregarCatalogo() {
+    const response = await fetch("data/aulas.json", { cache: "no-store" });
+    if (!response.ok) {
+        throw new Error("Nao foi possivel carregar data/aulas.json");
+    }
+    const data = await response.json();
+    state.modulos = Array.isArray(data.modulos) ? data.modulos : [];
+}
+
+function renderizarBotoes() {
+    const nav = document.getElementById("modulo-nav");
+    nav.innerHTML = "";
+
+    state.modulos.forEach((modulo, index) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.innerText = modulo.nome;
+        button.addEventListener("click", () => filtrarAulas(modulo.nome));
+
+        if (index === 0) {
+            state.moduloAtual = modulo.nome;
+        }
+
+        nav.appendChild(button);
+    });
+}
+
+function renderizarCards(aulas, moduloSelecionado) {
+    const titulo = document.getElementById("modulo-titulo");
+    const container = document.getElementById("lista-aulas");
+    titulo.innerText = `Modulo: ${moduloSelecionado}`;
+
+    if (!Array.isArray(aulas) || aulas.length === 0) {
+        container.innerHTML = `<p class="empty-state">Nenhuma aula de ${escapeHtml(moduloSelecionado)} liberada ainda.</p>`;
+        return;
+    }
+
+    container.innerHTML = aulas.map((aula) => {
+        const numero = escapeHtml(aula.numero ?? "");
+        const tituloAula = escapeHtml(aula.titulo ?? "Sem titulo");
+        const descricao = escapeHtml(aula.descricao ?? "");
+        const link = escapeHtml(aula.link ?? "#");
+        const alvo = aula.externo ? ' target="_blank" rel="noopener noreferrer"' : "";
+
+        return `
+            <article class="aula-card">
+                <div class="aula-badge">Aula ${numero}</div>
+                <h3>${tituloAula}</h3>
+                <p>${descricao}</p>
+                <a href="${link}" class="btn-acessar"${alvo}>Acessar aula</a>
+            </article>
+        `;
+    }).join("");
+}
+
+function filtrarAulas(moduloSelecionado) {
+    state.moduloAtual = moduloSelecionado;
+    document.querySelectorAll("#modulo-nav button").forEach((button) => {
+        button.classList.toggle("active", button.innerText === moduloSelecionado);
+    });
+    const modulo = state.modulos.find((item) => item.nome === moduloSelecionado);
+    renderizarCards(modulo?.aulas || [], moduloSelecionado);
+}
+
+async function deslogar() {
+    if (window._supabase) {
+        await window._supabase.auth.signOut();
+    }
+    window.location.href = "index.html";
+}
+
+async function init() {
+    try {
+        await carregarUsuario();
+        await carregarCatalogo();
+        renderizarBotoes();
+
+        if (state.moduloAtual) {
+            filtrarAulas(state.moduloAtual);
+        } else {
+            document.getElementById("lista-aulas").innerHTML = '<p class="empty-state">Nenhum modulo configurado no JSON.</p>';
+        }
+    } catch (error) {
+        document.getElementById("lista-aulas").innerHTML = `<p class="empty-state">${escapeHtml(error.message)}</p>`;
+    }
+}
+
+const btnSair = document.getElementById("btn-sair");
+if (btnSair) {
+    btnSair.addEventListener("click", deslogar);
+}
+init();

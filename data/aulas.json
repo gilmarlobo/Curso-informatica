@@ -1,0 +1,50 @@
+{
+  "modulos": [
+    {
+      "nome": "Fundamentos da Informatica",
+      "aulas": [
+        {
+          "numero": 1,
+          "titulo": "Historia da computacao",
+          "descricao": "Conheca o ENIAC e aprenda as bases da proeficiencia no teclado.",
+          "link": "aulas/aula01.html",
+          "externo": false
+        },
+        {
+          "numero": 2,
+          "titulo": "Tipos de computadores",
+          "descricao": "Entenda as diferencas entre desktops, notebooks e outros tipos de equipamentos.",
+          "link": "aulas/aula02.html",
+          "externo": false
+        },
+        {
+          "numero": 3,
+          "titulo": "Hardware e Software",
+          "descricao": "Aprenda a diferenca entre a parte fisica e a parte logica do computador, incluindo input e output.",
+          "link": "aulas/aula03.html",
+          "externo": false
+        }
+      ]
+    },
+    {
+      "nome": "Word",
+      "aulas": []
+    },
+    {
+      "nome": "PowerPoint",
+      "aulas": []
+    },
+    {
+      "nome": "Excel",
+      "aulas": []
+    },
+    {
+      "nome": "Internet",
+      "aulas": []
+    },
+    {
+      "nome": "IAs",
+      "aulas": []
+    }
+  ]
+}

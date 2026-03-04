@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel do Aluno - Informatica</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="home-container">
+    <header class="home-header">
+        <h1><i class="material-icons">school</i> Portal do Aluno</h1>
+        <div class="user-area">
+            <span id="user-name">Carregando...</span>
+        </div>
+    </header>
+
+    <nav id="modulo-nav" class="modulo-nav"></nav>
+
+    <div class="modulo-header">
+        <h2 id="modulo-titulo">Escolha um modulo para comecar</h2>
+    </div>
+
+    <div id="lista-aulas" class="aulas-grid"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase.js"></script>
+<script src="js/home.js"></script>
+</body>
+</html>

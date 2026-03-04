@@ -1,0 +1,111 @@
+/* aula.css */
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.aula-container {
+    max-width: 900px;
+    margin: 30px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+.aula-header {
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+.aula-header h1 {
+    color: #0056b3;
+    margin-top: 10px;
+    font-size: 2.2em;
+}
+
+.btn-voltar {
+    background-color: #6c757d;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+    text-decoration: none; /* Se usar <a> */
+    display: inline-block; /* Se usar <a> */
+}
+
+.btn-voltar:hover {
+    background-color: #5a6268;
+}
+
+.aula-secao {
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px dashed #eee;
+}
+
+.aula-secao:last-child {
+    border-bottom: none;
+}
+
+.aula-secao h2 {
+    color: #007bff;
+    font-size: 1.8em;
+    margin-bottom: 15px;
+}
+
+.aula-secao h3 {
+    color: #343a40;
+    font-size: 1.4em;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+.aula-secao p {
+    margin-bottom: 15px;
+    line-height: 1.8;
+}
+
+.aula-secao ul {
+    list-style-type: disc;
+    margin-left: 25px;
+    margin-bottom: 15px;
+}
+
+.aula-secao ul li {
+    margin-bottom: 8px;
+}
+
+.video-placeholder, .imagem-ilustrativa {
+    background-color: #e9ecef;
+    min-height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    overflow: hidden; /* Garante que a imagem se ajuste */
+}
+
+.video-placeholder img, .imagem-ilustrativa img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.aula-footer {
+    text-align: center;
+    padding-top: 20px;
+    color: #777;
+    font-size: 0.9em;
+}

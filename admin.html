@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrativo - Professor</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Painel do Professor</h1>
+       
+    </header>
+    <div class="acoes-admin">
+    <button onclick="abrirModal('modalTurma')">+ Nova Turma</button>
+    <button onclick="abrirModal('modalAula')">+ Nova Aula</button>
+</div>
+<div id="modalTurma" class="modal">
+    <div class="modal-content">
+        <h3>Cadastrar Turma</h3>
+        <input type="text" id="t_nome" placeholder="Nome da Turma (Ex: Info Iniciante)">
+        
+        <label>Dias de Aula:</label>
+        <select id="t_dias">
+            <option value="Segunda-feira">Segunda-feira</option>
+            <option value="Terça-feira">Terça-feira</option>
+            <option value="Quarta-feira">Quarta-feira</option>
+            <option value="Quinta-feira">Quinta-feira</option>
+            <option value="Sexta-feira">Sexta-feira</option>
+            <option value="Sábado">Sábado</option>
+            <option value="Domingo">Domingo</option>
+        </select>
+
+        <input type="time" id="t_hora">
+        <button type="button" id="btnSalvarTurma" onclick=salvarTurma()>Salvar Turma</button>
+        <button onclick="fecharModal('modalTurma')">Cancelar</button>
+    </div>
+</div>
+
+<div id="modalAula" class="modal">
+    <div class="modal-content">
+        <h3>Configurar Link da Aula</h3>
+        <input type="number" id="au_numero" placeholder="Ordem da Aula (Ex: 1)">
+        
+        <label>Módulo:</label>
+        <select id="au_modulo">
+            <option value="Sistema Operacional">Sistema Operacional</option>
+            <option value="Word">Word</option>
+            <option value="PowerPoint">PowerPoint</option>
+            <option value="Excel">Excel</option>
+            <option value="Internet">Internet</option>
+            <option value="IAs">IAs</option>
+        </select>
+
+        <input type="text" id="au_titulo" placeholder="Título que aparece no card">
+        <textarea id="au_conteudo" placeholder="Pequeno resumo/descrição..."></textarea>
+        
+        <label>Nome do Arquivo HTML:</label>
+        <input type="text" id="au_url" placeholder="ex: aula-01-word.html">
+        
+        <label>Para qual turma?</label>
+        <select id="au_turma"></select>
+        
+        <button onclick="salvarAula()">Cadastrar Link</button>
+        <button onclick="fecharModal('modalAula')">Cancelar</button>
+    </div>
+</div>
+<div id="modalAluno" class="modal">
+    <div class="modal-content">
+        <h3>Editar Dados do Aluno</h3>
+        <input type="hidden" id="edit_a_id">
+        
+        <label>Nome Completo:</label>
+        <input type="text" id="edit_a_nome" placeholder="Nome do Aluno">
+        
+        <label>WhatsApp / Contato:</label>
+        <input type="text" id="edit_a_contato" placeholder="(00) 00000-0000">
+        
+        <label>Endereço:</label>
+        <input type="text" id="edit_a_endereco" placeholder="Rua, nº, Bairro">
+        
+        <label>Vincular à Turma:</label>
+        <select id="edit_a_turma">
+            <option value="">Carregando turmas...</option>
+        </select>
+        
+        <div style="margin-top: 15px;">
+            <button onclick="salvarAlteracoesAluno()" style="background-color: #28a745; color: white;">Salvar Alterações</button>
+            <button onclick="fecharModal('modalAluno')">Cancelar</button>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        <h2>Gerenciar Alunos</h2>
+        <hr>
+
+        <section id="lista-alunos">
+            <h2>Alunos Cadastrados</h2>
+            <div id="tabela-alunos">
+                Carregando alunos...
+            </div>
+        </section>
+    </div>
+     <button onclick="deslogar()">Sair</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase.js"></script>
+   <script>
+    // Inicialização e Proteção
+    async function protegerPagina() {
+        if (!window._supabase) {
+            console.error("Supabase não carregado!");
+            return;
+        }
+
+        const { data: { session } } = await window._supabase.auth.getSession();
+        if (!session) { window.location.href = 'index.html'; return; }
+
+        const { data: profile } = await window._supabase
+            .from('profiles')
+            .select('role')
+            .eq('id', session.user.id)
+            .single();
+
+        if (!profile || profile.role !== 'admin') {
+            alert("Acesso restrito ao professor!");
+            window.location.href = 'home.html';
+        } else {
+            carregarAlunos();
+        }
+    }
+
+    // Listagem de Alunos com Botão Editar
+    async function carregarAlunos() {
+        const { data: alunos, error } = await window._supabase
+            .from('profiles')
+            .select('*, turmas(nome_turma)')
+            .eq('role', 'aluno');
+        
+        if (error) console.error(error);
+
+        const div = document.getElementById('tabela-alunos');
+        div.innerHTML = alunos.map(a => `
+            <div class="aluno-item" style="border-bottom: 1px solid #ccc; padding: 10px; display: flex; justify-content: space-between;">
+                <span>
+                    <strong>${a.nome || 'Sem nome'}</strong> (${a.email})<br>
+                    <small>Turma: ${a.turmas ? a.turmas.nome_turma : 'Não vinculado'}</small>
+                </span>
+                <button onclick="prepararEdicaoAluno('${a.id}')">Editar</button>
+            </div>
+        `).join('');
+    }
+
+    // Funções de Modal
+    function abrirModal(id) { 
+        document.getElementById(id).style.display = 'block'; 
+        // Se abrir o modal de aula, carrega as turmas
+        if(id === 'modalAula') carregarTurmasNoSelect('au_turma');
+    }
+    
+    function fecharModal(id) { document.getElementById(id).style.display = 'none'; }
+
+    // Auxiliar: Carrega turmas em qualquer Select
+    async function carregarTurmasNoSelect(selectId) {
+        const { data: turmas } = await window._supabase.from('turmas').select('*');
+        const select = document.getElementById(selectId);
+        select.innerHTML = '<option value="">Selecione uma turma</option>' + 
+            turmas.map(t => `<option value="${t.id}">${t.nome_turma}</option>`).join('');
+    }
+
+    // --- AÇÕES DE BANCO DE DADOS ---
+
+   async function salvarTurma() {
+    // 1. Captura os elementos primeiro
+    const elNome = document.getElementById('t_nome');
+    const elDias = document.getElementById('t_dias');
+    const elHora = document.getElementById('t_hora');
+
+    // 2. Verifica se algum deles sumiu (o que causa o erro de 'null')
+    if (!elNome || !elDias || !elHora) {
+        console.error("Erro: Um ou mais campos do modal não foram encontrados no HTML.");
+        return;
+    }
+
+    const nome = elNome.value;
+    const dias = elDias.value;
+    const hora = elHora.value;
+
+    if (!nome || !hora) {
+        alert("Preencha o nome e o horário da turma!");
+        return;
+    }
+
+    try {
+        const { error } = await window._supabase.from('turmas').insert([{ 
+            nome_turma: nome, 
+            dias_semana: dias, 
+            horario: hora 
+        }]);
+
+        if (error) throw error;
+
+        alert("Turma salva com sucesso!");
+        location.reload();
+    } catch (err) {
+        alert("Erro ao salvar no banco: " + err.message);
+    }
+}
+    async function salvarAula() {
+    const dados = {
+        numero: document.getElementById('au_numero').value,
+        modulo: document.getElementById('au_modulo').value,
+        conteudo: document.getElementById('au_conteudo').value, // Usei como descrição
+        url_pagina: document.getElementById('au_url').value,   // O arquivo HTML
+        turma_id: document.getElementById('au_turma').value
+    };
+
+    if(!dados.url_pagina || !dados.turma_id) { 
+        alert("Preencha o arquivo HTML e a turma!"); 
+        return; 
+    }
+
+    const { error } = await window._supabase.from('aulas').insert([dados]);
+    
+    if (error) alert(error.message);
+    else { alert("Link da aula configurado!"); location.reload(); }
+}
+
+       async function deslogar() {
+        await window._supabase.auth.signOut();
+        window.location.href = 'index.html';
+    }
+
+    // Iniciar
+    protegerPagina();
+
+    async function prepararEdicaoAluno(id) {
+    // 1. Buscar dados do aluno específico
+    const { data: aluno, error: errA } = await window._supabase
+        .from('profiles')
+        .select('*')
+        .eq('id', id)
+        .single();
+
+    // 2. Buscar todas as turmas para o select
+    const { data: turmas, error: errT } = await window._supabase
+        .from('turmas')
+        .select('id, nome_turma');
+
+    if (errA || errT) {
+        alert("Erro ao carregar dados para edição");
+        return;
+    }
+
+    // 3. Preencher o Select de Turmas
+    const selectTurma = document.getElementById('edit_a_turma');
+    selectTurma.innerHTML = '<option value="">Sem Turma (Apenas Cadastro)</option>';
+    
+    turmas.forEach(t => {
+        const option = document.createElement('option');
+        option.value = t.id;
+        option.textContent = t.nome_turma;
+        if (aluno.turma_id === t.id) option.selected = true;
+        selectTurma.appendChild(option);
+    });
+
+    // 4. Preencher todos os campos do modal
+    document.getElementById('edit_a_id').value = aluno.id;
+    document.getElementById('edit_a_nome').value = aluno.nome || '';
+    document.getElementById('edit_a_contato').value = aluno.contato || '';
+    document.getElementById('edit_a_endereco').value = aluno.endereco || '';
+    
+    abrirModal('modalAluno');
+}
+
+async function salvarAlteracoesAluno() {
+    const id = document.getElementById('edit_a_id').value;
+    
+    const updates = {
+        nome: document.getElementById('edit_a_nome').value,
+        contato: document.getElementById('edit_a_contato').value,
+        endereco: document.getElementById('edit_a_endereco').value,
+        turma_id: document.getElementById('edit_a_turma').value || null
+    };
+
+    // Converter turma_id para número se não for null
+    if (updates.turma_id) updates.turma_id = parseInt(updates.turma_id);
+
+    const { error } = await window._supabase
+        .from('profiles')
+        .update(updates)
+        .eq('id', id);
+
+    if (error) {
+        alert("Erro ao atualizar: " + error.message);
+    } else {
+        alert("Dados do aluno atualizados com sucesso!");
+        fecharModal('modalAluno');
+        carregarAlunos(); // Atualiza a lista sem recarregar a página
+    }
+}
+</script>
+</body>
+</html>
