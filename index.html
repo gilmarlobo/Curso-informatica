@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Curso de InformÃ¡tica</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2>Acesso ao Portal</h2>
+        <input type="email" id="email" placeholder="Seu E-mail">
+        <input type="password" id="password" placeholder="Sua Senha">
+        <button id="btnLogin">Entrar</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase.js"></script>
+    
+    <script>
+    async function realizarLogin() {
+        // Verifica se o cliente supabase foi carregado
+        if (!window._supabase) {
+            alert("Erro: ConexÃ£o com Supabase nÃ£o estabelecida. Verifique o arquivo js/supabase.js");
+            return;
+        }
+
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        const btn = document.getElementById('btnLogin');
+        btn.innerText = "Carregando...";
+        btn.disabled = true;
+
+        try {
+            const { data, error } = await window._supabase.auth.signInWithPassword({
+                email: email,
+                password: password
+            });
+
+            if (error) throw error;
+
+            const { data: profile, error: profileError } = await window._supabase
+                .from('profiles')
+                .select('role')
+                .eq('id', data.user.id)
+                .single();
+
+            if (profileError) throw profileError;
+
+            if (profile.role === 'admin') {
+                window.location.href = 'admin.html';
+            } else {
+                window.location.href = 'home.html';
+            }
+
+        } catch (err) {
+            alert("Erro no acesso: " + err.message);
+        } finally {
+            btn.innerText = "Entrar";
+            btn.disabled = false;
+        }
+    }
+
+    document.getElementById('btnLogin').addEventListener('click', realizarLogin);
+</script>
+</body>
+</html>
