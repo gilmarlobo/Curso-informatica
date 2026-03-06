@@ -23,12 +23,34 @@
           "descricao": "Aprenda a diferenca entre a parte fisica e a parte logica do computador, incluindo input e output.",
           "link": "aulas/aula03.html",
           "externo": false
+        },
+        {
+          "numero": 4,
+          "titulo": "Metadados e extensoes",
+          "descricao": "Aprenda sobre metadados, a janela Propriedades e a funcao das extensoes de arquivos.",
+          "link": "aulas/aula04.html",
+          "externo": false
         }
       ]
     },
     {
       "nome": "Word",
-      "aulas": []
+      "aulas": [
+        {
+          "numero": 1,
+          "titulo": "Historia do Microsoft Word",
+          "descricao": "Conheca a evolucao do Word desde as primeiras versoes ate a colaboracao na nuvem.",
+          "link": "aulas/aula01_word.html",
+          "externo": false
+        },
+        {
+          "numero": 2,
+          "titulo": "Tabelas no Word",
+          "descricao": "Aprenda a criar, editar e formatar tabelas para organizar informacoes com clareza.",
+          "link": "aulas/aula02_word.html",
+          "externo": false
+        }
+      ]
     },
     {
       "nome": "PowerPoint",
@@ -48,3 +70,4 @@
     }
   ]
 }
+
