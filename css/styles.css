@@ -254,3 +254,27 @@ body {
         font-size: 1.2rem;
     }
 }
+
+.campanha-card {
+    border-color: #f59e0b;
+    background: linear-gradient(180deg, #fff7ed, #fffbf3);
+}
+
+.campanha-card h3 {
+    color: #c2410c;
+}
+
+.campanha-img-wrapper {
+    margin-top: 10px;
+    border: 1px dashed #f59e0b;
+    border-radius: 10px;
+    padding: 8px;
+    background: #fff;
+}
+
+.campanha-img {
+    width: 100%;
+    max-height: 140px;
+    object-fit: contain;
+    border-radius: 6px;
+}

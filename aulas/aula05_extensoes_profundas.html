@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 05 - Se aprofundando nas Extensões de Arquivos</title>
+    <link rel="stylesheet" href="../css/aulas.css">
+    <link rel="stylesheet" href="aula.css">
+</head>
+
+<body>
+    <div class="aula-container">
+        <header class="aula-header">
+            <button onclick="window.history.back()" class="btn-voltar">
+                &larr; Voltar para as Aulas
+            </button>
+            <h1>Aula 05: Se aprofundando nas Extensões de Arquivos</h1>
+        </header>
+
+        <section class="aula-secao">
+            <h2>O que é realmente uma extensão?</h2>
+            <div class="video-placeholder">
+                <img src="../img/Mod01_aula05_extensoes.png" alt="Arquivos digitais e informacoes de propriedades">
+            </div>
+            <p>Uma extensão é o texto que aparece depois do ponto no nome do arquivo, como <strong>.docx</strong> ou
+                <strong>.jpg</strong>. Ela não é só parte do nome; ela diz ao computador que tipo de conteúdo está
+                dentro do arquivo.</p>
+            <p>Exemplo: o arquivo <strong>trabalho.docx</strong> está no formato de texto do Word, enquanto
+                <strong>foto.jpg</strong> é uma imagem. O computador usa essa indicação para escolher qual programa
+                abrir.</p>
+        </section>
+
+        <section class="aula-secao">
+            <h2>Como o computador usa essa “etiqueta”</h2>
+            <p>Quando você clica duas vezes em um arquivo, o Windows faz duas perguntas:</p>
+            <ol>
+                <li>Qual é a extensão (tipo) do arquivo?</li>
+                <li>Qual programa está associado a esse tipo?</li>
+            </ol>
+            <p>Se a extensão for <strong>.pdf</strong>, o sistema procura o programa associado a PDF (como Adobe
+                Reader). Se for <strong>.mp3</strong>, procura o player de música.</p>
+            <p>Essa associação é um tipo de metadado: o sistema sabe que arquivos com a mesma extensão pertencem a mesma
+                família e abrem com o mesmo aplicativo.</p>
+        </section>
+
+        <section class="aula-secao">
+            <h2>Por que isso é importante?</h2>
+            <ul>
+                <li>Se você mudar o nome de <strong>foto.jpg</strong> para <strong>foto.docx</strong>, o Word pode
+                    tentar abrir e falhar, porque o conteúdo é de imagem.</li>
+                <li>Se você não sabe qual programa usar, a extensão ajuda: <strong>.xlsx</strong> é planilha,
+                    <strong>.pptx</strong> é apresentação.</li>
+                <li>Ao salvar um arquivo, escolha o formato certo para que outras pessoas possam abrir sem erro.</li>
+            </ul>
+        </section>
+
+        <section class="aula-secao">
+            <h2>Exemplos de extensões</h2>
+            <p>Veja alguns tipos populares e onde eles são usados:</p>
+            <ul>
+                <li><strong>.docx</strong> – documento de texto do Word</li>
+                <li><strong>.xlsx</strong> – planilha do Excel</li>
+                <li><strong>.pptx</strong> – apresentação do PowerPoint</li>
+                <li><strong>.pdf</strong> – documento portátil para leitura</li>
+                <li><strong>.jpg / .png</strong> – imagens</li>
+                <li><strong>.mp3</strong> – áudio (música, gravações)</li>
+                <li><strong>.mp4</strong> – vídeo</li>
+                <li><strong>.zip</strong> – arquivo compactado com vários arquivos dentro</li>
+                <li><strong>.exe</strong> – programa executável (no Windows)</li>
+            </ul>
+        </section>
+
+        <section class="aula-secao">
+            <h2>Como ver e mudar a extensão de um arquivo no Windows</h2>
+            <p>No Explorador de Arquivos, vá em <strong>Exibir</strong> e marque <strong>Extensões de nome de
+                    arquivo</strong>. Assim você vê o final dos nomes e evita troca errada.</p>
+            <p>Para mudar, clique com o botão direito em um arquivo, escolha <strong>Renomear</strong> e altere o texto
+                depois do ponto. Só faça isso se souber o novo tipo e o programa correto.</p>
+        </section>
+
+        <footer class="aula-footer">
+            <p>&copy; 2026 Curso de Informática básica. Todos os direitos reservados.</p>
+        </footer>
+    </div>
+
+    <script src="../js/supabase.js"></script>
+    <script>
+        // Botão de voltar usa window.history.back()
+    </script>
+</body>
+
+</html>

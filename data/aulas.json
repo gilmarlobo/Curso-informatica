@@ -5,7 +5,7 @@
       "aulas": [
         {
           "numero": 1,
-          "titulo": "Historia da computacao",
+          "titulo": "História da computação",
           "descricao": "Conheca o ENIAC e aprenda as bases da proeficiencia no teclado.",
           "link": "aulas/aula01.html",
           "externo": false
@@ -26,9 +26,35 @@
         },
         {
           "numero": 4,
-          "titulo": "Metadados e extensoes",
+          "titulo": "Metadados",
           "descricao": "Aprenda sobre metadados, a janela Propriedades e a funcao das extensoes de arquivos.",
           "link": "aulas/aula04.html",
+          "externo": false
+        },
+        {
+          "numero": 5,
+          "titulo": "Aprendendo mais sobre extensões de arquivos",
+          "descricao": "Entenda de forma simples como extensoes indicam o programa e veja exemplos práticos.",
+          "link": "aulas/aula05_extensoes_profundas.html",
+          "externo": false
+        }
+      ]
+    },
+    {
+      "nome": "Sistema Operacional",
+      "aulas": [
+        {
+          "numero": 1,
+          "titulo": "O que é um Sistema Operacional",
+          "descricao": "Entenda o que é um SO e como o Windows gerencia programas, arquivos e recursos.",
+          "link": "aulas/aula05_so.html",
+          "externo": false
+        },
+        {
+          "numero": 2,
+          "titulo": "Pastas e diretórios no Windows",
+          "descricao": "Aprenda a criar pastas, usar Ctrl+Shift+N e entender diretórios como caminhos.",
+          "link": "aulas/aula06_so_pastas.html",
           "externo": false
         }
       ]
@@ -45,6 +71,20 @@
         },
         {
           "numero": 2,
+          "titulo": "Formatação básica no Word",
+          "descricao": "Aprenda a mudar fonte, tamanho, negrito, itálico e alinhamento na aba Página Inicial.",
+          "link": "aulas/aula02_word_formatacao_basica.html",
+          "externo": false
+        },
+        {
+          "numero": 3,
+          "titulo": "Inserir formas e imagens",
+          "descricao": "Aprenda a incluir figuras, formas e fotos no documento usando a aba Inserir.",
+          "link": "aulas/aula03_word_formas_imagens.html",
+          "externo": false
+        },
+        {
+          "numero": 4,
           "titulo": "Tabelas no Word",
           "descricao": "Aprenda a criar, editar e formatar tabelas para organizar informacoes com clareza.",
           "link": "aulas/aula02_word.html",
@@ -70,4 +110,3 @@
     }
   ]
 }
-

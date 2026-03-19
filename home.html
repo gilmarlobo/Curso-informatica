@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,26 +11,29 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
-<div class="home-container">
-    <header class="home-header">
-        <h1><i class="material-icons">school</i> Portal do Aluno - Rede de Ensino Intellectus - Prof° Gilmar Pereira</h1>
-        <div class="user-area">
-            <span id="user-name">Carregando...</span>
+    <div class="home-container">
+        <header class="home-header">
+            <h1><i class="material-icons">school</i> Portal do Aluno - Rede de Ensino Intellectus - Prof° Gilmar Pereira
+            </h1>
+            <div class="user-area">
+                <span id="user-name">Carregando...</span>
+            </div>
+        </header>
+
+        <nav id="modulo-nav" class="modulo-nav"></nav>
+
+        <div class="modulo-header">
+            <h2 id="modulo-titulo">Escolha um modulo para comecar</h2>
         </div>
-    </header>
 
-    <nav id="modulo-nav" class="modulo-nav"></nav>
-
-    <div class="modulo-header">
-        <h2 id="modulo-titulo">Escolha um modulo para comecar</h2>
+        <div id="lista-aulas" class="aulas-grid"></div>
     </div>
 
-    <div id="lista-aulas" class="aulas-grid"></div>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="js/supabase.js"></script>
-<script src="js/home.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase.js"></script>
+    <script src="js/home.js"></script>
 </body>
+
 </html>

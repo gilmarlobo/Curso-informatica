@@ -69,7 +69,7 @@ function renderizarCards(aulas, moduloSelecionado) {
         return;
     }
 
-    container.innerHTML = aulas.map((aula) => {
+    const cards = aulas.map((aula) => {
         const numero = escapeHtml(aula.numero ?? "");
         const tituloAula = escapeHtml(aula.titulo ?? "Sem titulo");
         const descricao = escapeHtml(aula.descricao ?? "");
@@ -85,6 +85,19 @@ function renderizarCards(aulas, moduloSelecionado) {
             </article>
         `;
     }).join("");
+
+    const campanhaCard = `
+        <article class="aula-card campanha-card">
+            <div class="aula-badge">Campanha</div>
+            <h3>Campanha Páscoa Solidária</h3>
+            <p>Faça a sua doação de alimentos não perecíveis e ajude famílias carentes da nossa cidade.</p>
+            <div class="campanha-img-wrapper">
+                <img src="img/pascoa.jpeg" alt="Campanha interna" class="campanha-img" />
+            </div>
+        </article>
+    `;
+
+    container.innerHTML = cards + campanhaCard;
 }
 
 function filtrarAulas(moduloSelecionado) {
