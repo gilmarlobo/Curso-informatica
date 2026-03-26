@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Arquivos - Painel do Aluno</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .container-arquivos {
+            width: min(900px, 100%);
+            margin: 0 auto;
+            padding: 28px;
+        }
+
+        .header-arquivos {
+            margin-bottom: 32px;
+        }
+
+        .header-arquivos h1 {
+            margin: 0 0 8px 0;
+            font-size: 2rem;
+            color: var(--text-main);
+        }
+
+        .header-arquivos p {
+            margin: 0;
+            color: var(--text-muted);
+        }
+
+        .upload-area {
+            border: 2px dashed var(--border);
+            border-radius: 12px;
+            padding: 40px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background-color: #f9fafb;
+            margin-bottom: 32px;
+        }
+
+        .upload-area:hover {
+            border-color: var(--accent);
+            background-color: #f0f9ff;
+        }
+
+        .upload-area.dragover {
+            border-color: var(--accent-strong);
+            background-color: #e0f2fe;
+            box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+        }
+
+        .upload-area i {
+            font-size: 48px;
+            color: var(--accent);
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .upload-area h3 {
+            margin: 0 0 8px 0;
+            font-size: 1.2rem;
+            color: var(--text-main);
+        }
+
+        .upload-area p {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        #input-arquivo {
+            display: none;
+        }
+
+        .section-arquivos {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        .section-titulo {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin: 0 0 20px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .lista-arquivos {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .item-arquivo {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            border-bottom: 1px solid var(--border);
+            transition: background-color 0.2s ease;
+        }
+
+        .item-arquivo:last-child {
+            border-bottom: none;
+        }
+
+        .item-arquivo:hover {
+            background-color: #f9fafb;
+        }
+
+        .arquivo-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex: 1;
+        }
+
+        .arquivo-icone {
+            font-size: 24px;
+            color: var(--accent);
+        }
+
+        .arquivo-detalhes {
+            flex: 1;
+        }
+
+        .arquivo-nome {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            word-break: break-word;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .arquivo-nome:hover {
+            color: var(--accent-strong);
+            text-decoration: underline;
+        }
+
+        .arquivo-data {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        .arquivo-acoes {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-deletar {
+            padding: 8px 12px;
+            background-color: #fee2e2;
+            color: #dc2626;
+            border: 1px solid #fecaca;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .btn-deletar:hover {
+            background-color: #fecaca;
+            border-color: #dc2626;
+        }
+
+        .vazio-message {
+            text-align: center;
+            padding: 32px;
+            color: var(--text-muted);
+        }
+
+        .vazio-message i {
+            font-size: 48px;
+            color: var(--border);
+            display: block;
+            margin-bottom: 16px;
+        }
+
+        .modal-confirmacao {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-confirmacao.ativo {
+            display: flex;
+        }
+
+        .modal-conteudo {
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            max-width: 400px;
+            box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .modal-conteudo h3 {
+            margin: 0 0 12px 0;
+            font-size: 1.2rem;
+            color: var(--text-main);
+        }
+
+        .modal-conteudo p {
+            margin: 0 0 24px 0;
+            color: var(--text-muted);
+        }
+
+        .modal-acoes {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+        }
+
+        .btn-modal {
+            padding: 10px 20px;
+            border-radius: 6px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-cancelar {
+            background-color: #e5e7eb;
+            color: var(--text-main);
+        }
+
+        .btn-cancelar:hover {
+            background-color: #d1d5db;
+        }
+
+        .btn-confirmar-deletar {
+            background-color: #dc2626;
+            color: white;
+        }
+
+        .btn-confirmar-deletar:hover {
+            background-color: #b91c1c;
+        }
+
+        .loading {
+            display: inline-block;
+            margin: 0 4px;
+        }
+
+        .spinner {
+            border: 2px solid var(--border);
+            border-top: 2px solid var(--accent);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 0.8s linear infinite;
+            display: inline-block;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .mensagem {
+            padding: 12px 16px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .mensagem.sucesso {
+            background-color: #dcfce7;
+            color: #166534;
+            border: 1px solid #86efac;
+            display: block;
+        }
+
+        .mensagem.erro {
+            background-color: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #fecaca;
+            display: block;
+        }
+
+        .voltam {
+            margin-bottom: 20px;
+        }
+
+        .btn-voltar {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background-color: #e5e7eb;
+            color: var(--text-main);
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .btn-voltar:hover {
+            background-color: #d1d5db;
+        }
+
+        @media (max-width: 640px) {
+            .container-arquivos {
+                padding: 16px;
+            }
+
+            .header-arquivos h1 {
+                font-size: 1.5rem;
+            }
+
+            .item-arquivo {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .arquivo-acoes {
+                width: 100%;
+                margin-top: 12px;
+            }
+
+            .modal-conteudo {
+                margin: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-arquivos">
+        <div class="voltam">
+            <a href="home.html" class="btn-voltar">
+                <i class="material-icons">arrow_back</i>
+                Voltar
+            </a>
+        </div>
+
+        <div class="header-arquivos">
+            <h1><i class="material-icons" style="font-size: 2rem;">folder</i> Meus Arquivos</h1>
+            <p>Aqui você pode fazer upload de seus arquivos e acessá-los quando precisar.</p>
+        </div>
+
+        <div id="mensagem-area" class="mensagem"></div>
+
+        <div class="upload-area" id="upload-area">
+            <i class="material-icons">cloud_upload</i>
+            <h3>Arraste seus arquivos aqui</h3>
+            <p>ou clique para selecionar dos seus arquivos</p>
+        </div>
+
+        <input type="file" id="input-arquivo" accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt,.zip" multiple>
+
+        <div class="section-arquivos">
+            <h2 class="section-titulo">
+                <i class="material-icons">description</i>
+                Seus Arquivos
+            </h2>
+            <ul id="lista-arquivos" class="lista-arquivos"></ul>
+            <div id="vazio" class="vazio-message" style="display: none;">
+                <i class="material-icons">folder_open</i>
+                <p>Nenhum arquivo enviado ainda. Clique na área acima para começar!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Confirmação de Deletar -->
+    <div id="modal-confirmacao" class="modal-confirmacao">
+        <div class="modal-conteudo">
+            <h3>Confirmar exclusão</h3>
+            <p>Tem certeza que deseja deletar o arquivo "<span id="nome-arquivo-delete"></span>"? Esta ação é
+                irreversível.</p>
+            <div class="modal-acoes">
+                <button class="btn-modal btn-cancelar" id="btn-cancelar-delete">Cancelar</button>
+                <button class="btn-modal btn-confirmar-deletar" id="btn-confirmar-delete">Deletar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase.js"></script>
+    <script src="js/meusarquivos.js"></script>
+</body>
+
+</html>

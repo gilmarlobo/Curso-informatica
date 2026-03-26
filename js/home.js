@@ -139,6 +139,13 @@ function filtrarAulas(moduloSelecionado) {
         button.classList.toggle("active", button.innerText === moduloSelecionado);
     });
     const modulo = state.modulos.find((item) => item.nome === moduloSelecionado);
+
+    // Verificar se é um módulo especial
+    if (modulo?.especial && modulo?.link) {
+        window.location.href = modulo.link;
+        return;
+    }
+
     renderizarCards(modulo?.aulas || [], moduloSelecionado);
 }
 
