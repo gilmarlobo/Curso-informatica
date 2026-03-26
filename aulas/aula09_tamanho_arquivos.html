@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 06 - Tamanho de Arquivos</title>
+    <link rel="stylesheet" href="../css/aulas.css">
+</head>
+
+<body>
+    <div class="aula-container">
+        <header class="aula-header">
+            <button onclick="window.history.back()" class="btn-voltar">
+                &larr; Voltar para as Aulas
+            </button>
+            <h1>Aula 06: Tamanho de Arquivos</h1>
+        </header>
+        <div class="video-placeholder">
+            <img src="../img/Mod01_aula06_tamanhos2.png" alt="Arquivos digitais e informacoes de propriedades">
+        </div>
+        <section class="aula-secao">
+            <h2>Por que medir Arquivos?</h2>
+            <p>Arquivos têm tamanhos variados, e entender esses tamanhos é importante para gerenciar espaço de armazenamento e transferência de dados.</p>
+            <p>Se arquivos possuem tamanhos diferentes, precisamos entender do que um arquivo é feito de fato na memória física do computador.</p>
+            <p>Será que se você salva a palavra "amor" em um arquivo de texto, e você abrir o computador será que você encontra a palavra amor lá dentro?🤔</p>
+        </section>
+        <section class="aula-secao">
+            <h2>O que é o Sistema Binário?</h2>
+            <div class="video-placeholder">
+                <img src="../img/Mod01_aula06_binarios.png" alt="Tamanho em binário">
+            </div>
+            <p>O sistema binário é a linguagem que os computadores usam para armazenar e processar informações.
+                Diferente do nosso sistema decimal (base 10, com dígitos de 0 a 9), o sistema binário usa apenas dois
+                dígitos: 0 e 1.</p>
+            <p>Cada dígito binário é chamado de <strong>bit</strong> (binary digit). Os bits são como interruptores que
+                podem estar ligados (1) ou desligados (0).</p>
+            <p>Por que binário? Porque os computadores funcionam com eletricidade, e é mais fácil representar dois
+                estados elétricos: corrente passando (1) ou não passando (0).</p>
+        </section>
+
+        <section class="aula-secao">
+            <h2>Como as Informações São Guardadas na Memória</h2>
+            <p>Todas as informações no computador são convertidas para binário antes de serem armazenadas:</p>
+            <ul>
+                <li><strong>Texto:</strong> Cada letra, número e símbolo é representado por um código binário, exemplo: a letra "A" é representada por 01000001, cada número representa um estado e a combinação desses estados forma o caractere.</li>
+                <li><strong>Imagens:</strong> São divididas em pixels, e cada pixel tem valores binários para cores
+                    (vermelho, verde, azul).</li>
+                <li><strong>Som:</strong> As ondas sonoras são amostradas e convertidas em números binários.</li>
+                <li><strong>Vídeos:</strong> Combinam imagens e som, tudo em binário.</li>
+            </ul>
+            <p>A memória do computador é como uma enorme sequência de interruptores (bits) que podem estar ligados ou
+                desligados, formando padrões que representam nossas informações.</p>
+        </section>
+
+        <section class="aula-secao">
+            <h2>Bits e Bytes</h2>
+            <p>Como os bits são muito pequenos, agrupamos eles em unidades maiores:</p>
+            <ul>
+                <li><strong>1 bit:</strong> O menor unidade. Pode ser 0 ou 1.</li>
+                <li><strong>1 byte:</strong> 8 bits juntos. É a unidade básica para armazenar um caractere de texto.
+                </li>
+            </ul>
+            <p>Exemplo: A palavra "amor" em binário é 01000001 01101101 01101111 01110010 (32 bits = 4 bytes).</p>
+        </section>
+
+        <section class="aula-secao">
+            <h2>Unidades de Medida de Tamanho</h2>
+            <p>Para medir tamanhos maiores, usamos múltiplos do byte:</p>
+            <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+                <thead>
+                    <tr style="background-color: #f0f0f0;">
+                        <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Unidade</th>
+                        <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Abreviação</th>
+                        <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Equivalência</th>
+                        <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Exemplo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="border: 1px solid #ddd; padding: 8px;">Byte</td>
+                        <td style="border: 1px solid #ddd; padding: 8px;">B</td>
+                        <td style="border: 1px solid #ddd; padding: 8px;">8 bits</td>
+                        <td style="border: 1px solid #ddd; padding: 8px;">Uma letra</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #ddd; padding: 8px;">Kilobyte</td>
+                        <td style="border: 1px solid #ddd; padding: 8px;">KB</td>
+                        <td style="border: 1px solid #ddd; padding: 8px;">1.000 bytes</td>
+                        <td style="border: 1px solid #ddd; padding: 8px;">Um parágrafo curto</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #ddd; padding: 8px;">Megabyte</td>
+                        <td style="border: 1px solid #ddd; padding: 8px;">MB</td>
+                        <td style="border: 1px solid #ddd; padding: 8px;">1.000 KB (1.000.000 bytes)</td>
+                        <td style="border: 1px solid #ddd; padding: 8px;">Uma música MP3</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #ddd; padding: 8px;">Gigabyte</td>
+                        <td style="border: 1px solid #ddd; padding: 8px;">GB</td>
+                        <td style="border: 1px solid #ddd; padding: 8px;">1.000 MB (1.000.000.000 bytes)</td>
+                        <td style="border: 1px solid #ddd; padding: 8px;">Um filme em HD</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #ddd; padding: 8px;">Terabyte</td>
+                        <td style="border: 1px solid #ddd; padding: 8px;">TB</td>
+                        <td style="border: 1px solid #ddd; padding: 8px;">1.000 GB (1.000.000.000.000 bytes)</td>
+                        <td style="border: 1px solid #ddd; padding: 8px;">HD externo grande</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="aula-secao">
+            <h2>Por que Importante Entender Tamanhos?</h2>
+            <p>Saber sobre tamanhos de arquivo ajuda você a:</p>
+            <ul>
+                <li>Escolher onde salvar seus arquivos (HD, nuvem, pen drive).</li>
+                <li>Entender por que alguns arquivos são maiores que outros.</li>
+                <li>Planejar espaço de armazenamento.</li>
+                <li>Resolver problemas de espaço insuficiente.</li>
+                <li>Comparar velocidades de internet (downloads por segundo).</li>
+            </ul>
+        </section>
+
+        <section class="aula-secao">
+            <h2>Exemplos Práticos</h2>
+            <p>Vamos ver alguns exemplos de tamanhos:</p>
+            <ul>
+                <li><strong>Documento Word simples:</strong> 50-100 KB</li>
+                <li><strong>Foto de celular:</strong> 2-5 MB</li>
+                <li><strong>Música MP3:</strong> 3-5 MB</li>
+                <li><strong>Vídeo curto (1 minuto):</strong> 10-50 MB</li>
+                <li><strong>Filme em HD:</strong> 1-2 GB</li>
+                <li><strong>Jogo de computador:</strong> 5-50 GB</li>
+            </ul>
+            <p>Lembre-se: arquivos comprimidos (ZIP) ocupam menos espaço!</p>
+        </section>
+
+        <section class="aula-secao">
+            <h2>Por que as Memórias Seguem Potências de 2?</h2>
+            <p>Você deve ter notado que os tamanhos de memória sempre seguem um padrão: 2, 4, 8, 16, 32, 64, 128, 256,
+                512, 1024, etc. Isso não é coincidência!</p>
+            <p>Esse padrão vem diretamente do <strong>sistema binário</strong> que os computadores usam.</p>
+             <p>As memórias do computador são organizadas em <strong>endereços</strong>. Cada endereço aponta para um
+                local específico na memória.</p>
+            <p>Com o sistema binário, é muito mais eficiente endereçar a memória usando potências de 2:</p>
+            <ul>
+                <li><strong>1 bit:</strong> 2 possibilidades (0 ou 1)</li>
+                <li><strong>2 bits:</strong> 4 possibilidades (00, 01, 10, 11)</li>
+                <li><strong>3 bits:</strong> 8 possibilidades</li>
+                <li><strong>4 bits:</strong> 16 possibilidades</li>
+                <li><strong>8 bits (1 byte):</strong> 256 possibilidades</li>
+                <li><strong>10 bits:</strong> 1024 possibilidades (1 KB)</li>
+                <li><strong>20 bits:</strong> 1.048.576 possibilidades (1 MB)</li>
+            </ul>
+            <p>Isso permite que o processador acesse qualquer posição da memória de forma rápida e precisa.</p>
+        </section>
+
+        <section class="aula-secao">
+            <h2>Exemplos no Dia a Dia</h2>
+            <p>Esse padrão aparece em muitos lugares da computação:</p>
+            <ul>
+                <li><strong>Memória RAM:</strong> 2GB, 4GB, 8GB, 16GB, 32GB...</li>
+                <li><strong>HDs e SSDs:</strong> 128GB, 256GB, 512GB, 1TB, 2TB...</li>
+                <li><strong>Processadores:</strong> 32 bits, 64 bits</li>
+                <li><strong>Sistemas de cor:</strong> 8 bits por canal (256 tons), 24 bits total (16 milhões de cores)
+                </li>
+            </ul>
+            <p>Próxima vez que você ver um tamanho de memória, lembre-se: é sempre uma potência de 2 por causa do
+                sistema binário!</p>
+        </section>
+
+        <section class="aula-secao">
+            <h2>Como Ver o Tamanho de um Arquivo</h2>
+            <p>No Windows, você pode ver o tamanho de qualquer arquivo:</p>
+            <ol>
+                <li>Clique com o botão direito no arquivo.</li>
+                <li>Selecione <strong>Propriedades</strong>.</li>
+                <li>Na aba <strong>Geral</strong>, veja o campo <strong>Tamanho</strong>.</li>
+            </ol>
+            <p>Para ver o tamanho de uma pasta inteira, clique com o botão direito na pasta e selecione Propriedades.
+            </p>
+        </section>
+
+        <footer class="aula-footer">
+            <button id="btn-concluir" class="btn-concluir">Marcar Aula como Concluída</button>
+            <p>&copy; 2026 Curso de Informática básica. Todos os direitos reservados.</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/supabase.js"></script>
+    <script src="../js/aula.js"></script>
+</body>
+
+</html>

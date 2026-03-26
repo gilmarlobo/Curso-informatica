@@ -1,6 +1,7 @@
 const state = {
     modulos: [],
-    moduloAtual: ""
+    moduloAtual: "",
+    progresso: new Map() // Map<modulo-aula_numero, concluida>
 };
 
 function escapeHtml(value) {
@@ -41,6 +42,32 @@ async function carregarCatalogo() {
     state.modulos = Array.isArray(data.modulos) ? data.modulos : [];
 }
 
+async function carregarProgresso() {
+    if (!window._supabase) return;
+
+    const { data: { session } } = await window._supabase.auth.getSession();
+    if (!session) return;
+
+    const { data, error } = await window._supabase
+        .from('progresso_aulas')
+        .select('modulo, aula_numero, concluida')
+        .eq('user_id', session.user.id);
+
+    if (error) {
+        console.error('Erro ao carregar progresso:', error);
+        return;
+    }
+
+    state.progresso.clear();
+    data.forEach(item => {
+        const key = `${item.modulo}-${item.aula_numero}`;
+        state.progresso.set(key, item.concluida);
+    });
+
+    // Calcular e mostrar progresso geral
+    calcularProgressoGeral();
+}
+
 function renderizarBotoes() {
     const nav = document.getElementById("modulo-nav");
     nav.innerHTML = "";
@@ -76,11 +103,17 @@ function renderizarCards(aulas, moduloSelecionado) {
         const link = escapeHtml(aula.link ?? "#");
         const alvo = aula.externo ? ' target="_blank" rel="noopener noreferrer"' : "";
 
+        const key = `${moduloSelecionado}-${numero}`;
+        const concluida = state.progresso.get(key);
+        const classeConcluida = concluida ? ' aula-concluida' : '';
+        const textoConcluida = concluida ? '<div class="status-concluida">Aula concluída</div>' : '';
+
         return `
-            <article class="aula-card">
+            <article class="aula-card${classeConcluida}">
                 <div class="aula-badge">Aula ${numero}</div>
                 <h3>${tituloAula}</h3>
                 <p>${descricao}</p>
+                ${textoConcluida}
                 <a href="${link}" class="btn-acessar"${alvo}>Acessar aula</a>
             </article>
         `;
@@ -109,6 +142,31 @@ function filtrarAulas(moduloSelecionado) {
     renderizarCards(modulo?.aulas || [], moduloSelecionado);
 }
 
+function calcularProgressoGeral() {
+    let totalAulas = 0;
+    let aulasConcluidas = 0;
+
+    state.modulos.forEach(modulo => {
+        if (modulo.aulas && Array.isArray(modulo.aulas)) {
+            modulo.aulas.forEach(aula => {
+                totalAulas++;
+                const key = `${modulo.nome}-${aula.numero}`;
+                if (state.progresso.get(key)) {
+                    aulasConcluidas++;
+                }
+            });
+        }
+    });
+
+    const porcentagem = totalAulas > 0 ? Math.round((aulasConcluidas / totalAulas) * 100) : 0;
+
+    // Mostrar no header
+    const progressoElement = document.getElementById('progresso-geral');
+    if (progressoElement) {
+        progressoElement.innerText = `Progresso: ${aulasConcluidas}/${totalAulas} aulas (${porcentagem}%)`;
+    }
+}
+
 async function deslogar() {
     if (window._supabase) {
         await window._supabase.auth.signOut();
@@ -120,6 +178,7 @@ async function init() {
     try {
         await carregarUsuario();
         await carregarCatalogo();
+        await carregarProgresso();
         renderizarBotoes();
 
         if (state.moduloAtual) {

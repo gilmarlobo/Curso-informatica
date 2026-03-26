@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="../css/aulas.css">
     <link rel="stylesheet" href="aula.css">
 </head>
+
 <body>
     <div class="aula-container">
         <header class="aula-header">
@@ -22,9 +24,12 @@
                 <img src="../img/Mod01_aula03_hardware-vs-software.webp" alt="Componentes de hardware e software">
             </div>
             <h3>Como eles trabalham juntos?</h3>
-            <p>O <strong>hardware</strong> e a parte física do computador: monitor, teclado, mouse, processador, memória e disco. Tudo o que pode ser tocado faz parte do hardware.</p>
-            <p>O <strong>software</strong> e a parte lógica: sistemas operacionais, programas e aplicativos. Ele e formado por instruções que dizem ao hardware o que fazer.</p>
-            <p>Sem software, o hardware nao executa tarefas úteis. Sem hardware, o software nao tem onde funcionar. Por isso, os dois dependem um do outro para que o computador opere corretamente.</p>
+            <p>O <strong>hardware</strong> e a parte física do computador: monitor, teclado, mouse, processador, memória
+                e disco. Tudo o que pode ser tocado faz parte do hardware.</p>
+            <p>O <strong>software</strong> e a parte lógica: sistemas operacionais, programas e aplicativos. Ele e
+                formado por instruções que dizem ao hardware o que fazer.</p>
+            <p>Sem software, o hardware nao executa tarefas úteis. Sem hardware, o software nao tem onde funcionar. Por
+                isso, os dois dependem um do outro para que o computador opere corretamente.</p>
         </section>
 
         <section class="aula-secao">
@@ -33,21 +38,25 @@
                 <img src="../img/Mod1_aula03_inputoutput.webp" alt="Dispositivos de entrada e saida">
             </div>
             <h3>Entrada e saída de dados</h3>
-            <p><strong>Input (entrada)</strong> e todo dado que enviamos para o computador. Exemplos comuns: teclado, mouse, microfone e câmera.</p>
-            <p><strong>Output (saída)</strong> e a resposta que o computador devolve ao usuário. Exemplos: monitor, impressora, caixas de som e projetor.</p>
-            <p>Em uma tarefa simples, como digitar e imprimir um texto, usamos input para inserir informações e output para visualizar ou obter o resultado final.</p>
+            <p><strong>Input (entrada)</strong> e todo dado que enviamos para o computador. Exemplos comuns: teclado,
+                mouse, microfone e câmera.</p>
+            <p><strong>Output (saída)</strong> e a resposta que o computador devolve ao usuário. Exemplos: monitor,
+                impressora, caixas de som e projetor.</p>
+            <p>Em uma tarefa simples, como digitar e imprimir um texto, usamos input para inserir informações e output
+                para visualizar ou obter o resultado final.</p>
         </section>
 
         <a href="#" class="btn-material">Material Complementar da Aula</a>
 
         <footer class="aula-footer">
+            <button id="btn-concluir" class="btn-concluir">Marcar Aula como Concluída</button>
             <p>&copy; 2026 Curso de Informatica básica. Todos os direitos reservados.</p>
         </footer>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="../js/supabase.js"></script>
-    <script>
-        // O botao de voltar utiliza window.history.back() como nas aulas anteriores
-    </script>
+    <script src="../js/aula.js"></script>
 </body>
+
 </html>

@@ -37,6 +37,13 @@
           "descricao": "Entenda de forma simples como extensoes indicam o programa e veja exemplos práticos.",
           "link": "aulas/aula05_extensoes_profundas.html",
           "externo": false
+        },
+        {
+          "numero": 6,
+          "titulo": "Tamanho de Arquivos",
+          "descricao": "Aprenda sobre o sistema binário, como as informações são armazenadas na memória e as unidades de medida de tamanho de arquivos.",
+          "link": "aulas/aula09_tamanho_arquivos.html",
+          "externo": false
         }
       ]
     },
@@ -55,6 +62,13 @@
           "titulo": "Pastas e diretórios no Windows",
           "descricao": "Aprenda a criar pastas, usar Ctrl+Shift+N e entender diretórios como caminhos.",
           "link": "aulas/aula06_so_pastas.html",
+          "externo": false
+        },
+        {
+          "numero": 3,
+          "titulo": "Aplicativos e o Gerenciador de Tarefas",
+          "descricao": "Aprenda sobre arquivos executáveis, instalação de programas, Microsoft Store e como usar o Gerenciador de Tarefas para fechar programas travados.",
+          "link": "aulas/aula07_so_aplicativos.html",
           "externo": false
         }
       ]
@@ -88,6 +102,13 @@
           "titulo": "Tabelas no Word",
           "descricao": "Aprenda a criar, editar e formatar tabelas para organizar informacoes com clareza.",
           "link": "aulas/aula02_word.html",
+          "externo": false
+        },
+        {
+          "numero": 5,
+          "titulo": "Títulos e Subtítulos",
+          "descricao": "Aprenda a definir títulos e subtítulos usando a ferramenta Estilos no Word para organizar seu documento.",
+          "link": "aulas/aula08_word_titulos.html",
           "externo": false
         }
       ]

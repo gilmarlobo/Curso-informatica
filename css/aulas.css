@@ -15,7 +15,7 @@ body {
     background: #fff;
     padding: 30px;
     border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
 .aula-header {
@@ -40,8 +40,10 @@ body {
     cursor: pointer;
     font-size: 1em;
     transition: background-color 0.3s ease;
-    text-decoration: none; /* Se usar <a> */
-    display: inline-block; /* Se usar <a> */
+    text-decoration: none;
+    /* Se usar <a> */
+    display: inline-block;
+    /* Se usar <a> */
 }
 
 .btn-voltar:hover {
@@ -86,7 +88,8 @@ body {
     margin-bottom: 8px;
 }
 
-.video-placeholder, .imagem-ilustrativa {
+.video-placeholder,
+.imagem-ilustrativa {
     background-color: #e9ecef;
     min-height: 200px;
     display: flex;
@@ -94,10 +97,12 @@ body {
     align-items: center;
     margin-bottom: 20px;
     border-radius: 5px;
-    overflow: hidden; /* Garante que a imagem se ajuste */
+    overflow: hidden;
+    /* Garante que a imagem se ajuste */
 }
 
-.video-placeholder img, .imagem-ilustrativa img {
+.video-placeholder img,
+.imagem-ilustrativa img {
     max-width: 100%;
     height: auto;
     display: block;
@@ -108,4 +113,25 @@ body {
     padding-top: 20px;
     color: #777;
     font-size: 0.9em;
+}
+
+.btn-concluir {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-concluir:hover {
+    background-color: #0056b3;
+}
+
+.btn-concluir:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
 }
