@@ -4,6 +4,14 @@ const state = {
     progresso: new Map() // Map<modulo-aula_numero, concluida>
 };
 
+const monkeyTypeRanking = [
+    { pos: 1, nome: 'Lúcio', wpm: 50, turma: 'Turma B', avatar: 'https://i.pravatar.cc/80?img=12' },
+    { pos: 2, nome: 'Ana Gabriely', wpm: 33, turma: 'Turma B', avatar: 'https://i.pravatar.cc/80?img=32' },
+    { pos: 3, nome: 'Jecivane', wpm: 31, turma: 'Turma A', avatar: 'https://i.pravatar.cc/80?img=8' },
+    { pos: 4, nome: 'Thamyres', wpm: 29, turma: 'Turma C', avatar: 'https://i.pravatar.cc/80?img=48' },
+    { pos: 5, nome: 'Ana Beatriz', wpm: 28, turma: 'Turma A', avatar: 'https://i.pravatar.cc/80?img=10' }
+];
+
 function escapeHtml(value) {
     return String(value)
         .replaceAll("&", "&amp;")
@@ -120,17 +128,77 @@ function renderizarCards(aulas, moduloSelecionado) {
     }).join("");
 
     const campanhaCard = `
-        <article class="aula-card campanha-card">
-            <div class="aula-badge">Campanha</div>
-            <h3>Campanha Páscoa Solidária</h3>
-            <p>Faça a sua doação de alimentos não perecíveis e ajude famílias carentes da nossa cidade.</p>
+        <article class="aula-card campanha-card" onclick="openMonkeyTypeRankingModal()" style="cursor:pointer;">
+            <div class="aula-badge">Ranking</div>
+            <h3>Ranking MonkeyType</h3>
+            <p>Veja os 5 primeiros colocados no desafio de digitação por velocidade (WPM) do mês de março/2026.</p>
             <div class="campanha-img-wrapper">
-                <img src="img/pascoa.jpeg" alt="Campanha interna" class="campanha-img" />
+                <img src="img/podio_digitacao.png" alt="MonkeyType" class="campanha-img" />
             </div>
+            <a href="#" class="btn-acessar" onclick="event.preventDefault(); openMonkeyTypeRankingModal();">Ver Podium</a>
         </article>
     `;
 
     container.innerHTML = cards + campanhaCard;
+}
+
+function formatarWPM(value) {
+    return `${value} WPM`;
+}
+
+function refreshMonkeyTypeRanking() {
+    const lista = document.getElementById('monkeytype-ranking-list');
+    const firstName = document.getElementById('podium-first-name');
+    const firstValue = document.getElementById('podium-first-value');
+    const secondName = document.getElementById('podium-second-name');
+    const secondValue = document.getElementById('podium-second-value');
+    const thirdName = document.getElementById('podium-third-name');
+    const thirdValue = document.getElementById('podium-third-value');
+    const firstAvatar = document.getElementById('podium-first-avatar');
+    const secondAvatar = document.getElementById('podium-second-avatar');
+    const thirdAvatar = document.getElementById('podium-third-avatar');
+
+    const rankingGlobal = monkeyTypeRanking
+        .sort((a, b) => b.wpm - a.wpm)
+        .slice(0, 5);
+
+    const [top1, top2, top3] = rankingGlobal;
+
+    firstName.textContent = top1 ? top1.nome : '-';
+    firstValue.textContent = top1 ? formatarWPM(top1.wpm) : '0 WPM';
+    firstAvatar.src = 'img/medalha_ouro.png';
+
+    secondName.textContent = top2 ? top2.nome : '-';
+    secondValue.textContent = top2 ? formatarWPM(top2.wpm) : '0 WPM';
+    secondAvatar.src = 'img/medalha_prata.png';
+
+    thirdName.textContent = top3 ? top3.nome : '-';
+    thirdValue.textContent = top3 ? formatarWPM(top3.wpm) : '0 WPM';
+    thirdAvatar.src = 'img/medalha_bronze.png';
+
+    lista.innerHTML = rankingGlobal.map((jogador, index) =>
+        `<li class="ranking-item ${index === 0 ? 'first' : index === 1 ? 'second' : index === 2 ? 'third' : ''}">
+            <span>${index + 1}º</span>
+            <strong>${jogador.nome} (${jogador.turma})</strong>
+            <small>${formatarWPM(jogador.wpm)}</small>
+        </li>`
+    ).join('');
+}
+
+function openMonkeyTypeRankingModal() {
+    refreshMonkeyTypeRanking();
+
+    const modal = document.getElementById('monkeytype-ranking-modal');
+    if (modal) {
+        modal.classList.remove('hidden');
+    }
+}
+
+function closeMonkeyTypeRankingModal() {
+    const modal = document.getElementById('monkeytype-ranking-modal');
+    if (modal) {
+        modal.classList.add('hidden');
+    }
 }
 
 function filtrarAulas(moduloSelecionado) {
@@ -181,6 +249,7 @@ async function deslogar() {
     window.location.href = "index.html";
 }
 
+
 async function init() {
     try {
         await carregarUsuario();
@@ -202,4 +271,14 @@ const btnSair = document.getElementById("btn-sair");
 if (btnSair) {
     btnSair.addEventListener("click", deslogar);
 }
+
+const modalOverlay = document.getElementById('monkeytype-ranking-modal');
+if (modalOverlay) {
+    modalOverlay.addEventListener('click', (event) => {
+        if (event.target === modalOverlay) {
+            closeMonkeyTypeRankingModal();
+        }
+    });
+}
+
 init();

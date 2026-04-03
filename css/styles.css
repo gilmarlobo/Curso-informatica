@@ -61,6 +61,35 @@ body {
     gap: 12px;
 }
 
+.user-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+    object-fit: cover;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-edit-profile {
+    padding: 6px 12px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: #fff;
+    color: var(--text-main);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.btn-edit-profile:hover {
+    background: var(--accent);
+    color: #fff;
+}
+
 #user-name {
     color: var(--text-muted);
     font-weight: 600;
@@ -207,6 +236,190 @@ body {
     color: var(--text-muted);
 }
 
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    z-index: 9999;
+}
+
+.modal-overlay.hidden {
+    display: none;
+}
+
+.modal-card {
+    width: min(520px, 100%);
+    background: linear-gradient(180deg, #ffffff, #f8f9fc);
+    border: 2px solid #d6d9e6;
+    border-radius: 16px;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
+    padding: 16px;
+    position: relative;
+}
+
+.modal-card h3 {
+    margin-top: 0;
+    color: #1f2937;
+    font-size: 1.45rem;
+}
+
+.modal-subtitle {
+    margin-top: 4px;
+    color: #4b5563;
+    font-size: 0.9rem;
+}
+
+.turma-selector-wrapper {
+    margin: 14px 0 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.turma-label {
+    color: #0f172a;
+    font-weight: 600;
+}
+
+.turma-info {
+    margin-top: 4px;
+    color: #334155;
+    font-size: 0.88rem;
+}
+
+#turma-select {
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    background: white;
+    color: #0f172a;
+}
+
+.modal-close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 34px;
+    height: 34px;
+    border: none;
+    background: #ef4444;
+    color: white;
+    font-size: 1.25rem;
+    border-radius: 50%;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.podium-display {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 1fr;
+    gap: 8px;
+    margin: 16px 0;
+}
+
+.podium-place {
+    background: #f3f4f6;
+    border-radius: 12px;
+    padding: 10px;
+    text-align: center;
+    border: 2px solid #cbd5e1;
+}
+
+.podium-place.first {
+    border-color: #f59e0b;
+    background: linear-gradient(180deg, #fef3c7, #f59e0b22);
+}
+
+.podium-place.second {
+    border-color: #94a3b8;
+}
+
+.podium-place.third {
+    border-color: #c2410c;
+}
+
+.podium-place span {
+    display: block;
+    font-weight: 700;
+}
+
+.podium-place.first span {
+    font-size: 3rem;
+    color: #f7c00be5;
+    /* dourado */
+}
+
+.podium-place.second span {
+    font-size: 2rem;
+    color: #9e9e9e;
+    /* prata */
+}
+
+.podium-place.third span {
+    font-size: 1.8rem;
+    color: #af5e0d;
+    /* bronze */
+}
+
+.podium-place strong {
+    display: block;
+    margin-top: 6px;
+    font-size: 1.05rem;
+}
+
+.podium-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    margin: 8px auto 0;
+    display: block;
+    object-fit: cover;
+}
+
+.podium-place small {
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+.ranking-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.ranking-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 9px 10px;
+    margin-bottom: 8px;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    background: #fff;
+}
+
+.ranking-item.first {
+    border-left: 5px solid #f59e0b;
+}
+
+.ranking-item.second {
+    border-left: 5px solid #94a3b8;
+}
+
+.ranking-item.third {
+    border-left: 5px solid #c2410c;
+}
+
+.ranking-item strong {
+    flex: 1;
+    text-align: left;
+}
+
 @media (max-width: 900px) {
     body {
         padding: 18px;
@@ -285,6 +498,38 @@ body {
 .campanha-card {
     border-color: #f59e0b;
     background: linear-gradient(180deg, #fff7ed, #fffbf3);
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.form-group input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.form-group input[type="file"] {
+    margin-bottom: 8px;
+}
+
+.avatar-preview {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+    object-fit: cover;
+    display: block;
 }
 
 .campanha-card h3 {

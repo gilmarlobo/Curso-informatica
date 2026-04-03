@@ -97,7 +97,7 @@ function initAula() {
     } else if (title.includes("Word") && title.includes("Tabelas")) {
         modulo = "Word";
         aulaNumero = 4;
-    } else if (title.includes("Word") && title.includes("Títulos")) {
+    } else if (title.includes("Aula 05") && title.includes("Títulos e Subtítulos")) {
         modulo = "Word";
         aulaNumero = 5;
     } else {

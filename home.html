@@ -15,7 +15,7 @@
 <body>
     <div class="home-container">
         <header class="home-header">
-            <h1><i class="material-icons">school</i> Portal do Aluno - Rede de Ensino Intellectus - Prof° Gilmar Pereira
+            <h1><i class="material-icons">school</i> Portal do Aluno - Rede de Ensino Intellectus </br> Prof° Gilmar
             </h1>
             <div class="user-area">
                 <span id="user-name">Carregando...</span>
@@ -27,6 +27,43 @@
 
         <div class="modulo-header">
             <h2 id="modulo-titulo">Escolha um modulo para comecar</h2>
+        </div>
+
+        <div id="monkeytype-ranking-modal" class="modal-overlay hidden" role="dialog" aria-modal="true"
+            aria-labelledby="modal-title">
+            <div class="modal-card">
+                <button class="modal-close" type="button" aria-label="Fechar"
+                    onclick="closeMonkeyTypeRankingModal()">×</button>
+                <h3 id="modal-title">Podium MonkeyType - Top 5</h3>
+                <p class="modal-subtitle">Os melhores digitadores por velocidade (WPM) do mês de
+                    <strong>março/2026</strong>
+                </p>
+                <div class="podium-display">
+                    <div class="podium-place second">
+                        <span>2º</span>
+                        <img id="podium-second-avatar" class="podium-avatar" src="img/medalha_prata.png"
+                            alt="Medalha de prata" />
+                        <strong id="podium-second-name">-</strong>
+                        <small id="podium-second-value">0 WPM</small>
+                    </div>
+                    <div class="podium-place first">
+                        <span>1º</span>
+                        <img id="podium-first-avatar" class="podium-avatar" src="img/medalha_ouro.png"
+                            alt="Medalha de ouro" />
+                        <strong id="podium-first-name">-</strong>
+                        <small id="podium-first-value">0 WPM</small>
+                    </div>
+                    <div class="podium-place third">
+                        <span>3º</span>
+                        <img id="podium-third-avatar" class="podium-avatar" src="img/medalha-bronze.png"
+                            alt="Medalha de bronze" />
+                        <strong id="podium-third-name">-</strong>
+                        <small id="podium-third-value">0 WPM</small>
+                    </div>
+                </div>
+                <ol id="monkeytype-ranking-list" class="ranking-list"></ol>
+                <button class="btn-acessar" type="button" onclick="closeMonkeyTypeRankingModal()">Fechar</button>
+            </div>
         </div>
 
         <div id="lista-aulas" class="aulas-grid"></div>
