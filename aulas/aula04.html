@@ -28,7 +28,8 @@
                 importantes como nome, tipo, tamanho, data de criacao, data de modificacao e autor.</p>
             <p>No Windows, voce pode ver essas informacoes clicando com o botao direito no arquivo e escolhendo
                 <strong>Propriedades</strong>. Essa janela permite consultar detalhes tecnicos e, em alguns tipos de
-                arquivo, editar campos como titulo, autor e comentarios.</p>
+                arquivo, editar campos como titulo, autor e comentarios.
+            </p>
             <p>Conhecer a janela Propriedades facilita a organizacao de arquivos, a busca por documentos e o controle de
                 versoes no dia a dia.</p>
             <div class="video-placeholder">
@@ -45,7 +46,8 @@
             <h3>Como identificar o tipo de um arquivo</h3>
             <p>A extensão é o final do nome do arquivo, normalmente após um ponto. Exemplos comuns:
                 <strong>.docx</strong>, <strong>.xlsx</strong>, <strong>.pdf</strong>, <strong>.jpg</strong> e
-                <strong>.mp4</strong>.</p>
+                <strong>.mp4</strong>.
+            </p>
             <p>Ela indica para o sistema qual programa podee abrir aquele conteúdo. Um arquivo com extensão errada pode
                 não abrir corretamente, mesmo que tenha sido salvo com informações válidas.</p>
             <p>Para evitar erros, é importante mantér as extensões visíveis no explorador de arquivos e ter cuidado ao
@@ -55,14 +57,128 @@
         <a href="#" class="btn-material">Material Complementar da Aula</a>
 
         <footer class="aula-footer">
-            <button id="btn-concluir" class="btn-concluir">Marcar Aula como Concluída</button>
+            <button id="btn-concluir" class="btn-concluir">Realizar Quiz</button>
             <p>&copy; 2026 Curso de Informática básica. Todos os direitos reservados.</p>
         </footer>
     </div>
 
+    <!-- Quiz Modal Template -->
+    <div id="quiz-modal" class="quiz-modal-overlay" aria-modal="true" role="dialog" aria-labelledby="quiz-title">
+        <div class="quiz-modal-card">
+            <h2 id="quiz-title">Pergunta de Verificação</h2>
+            <p>Responda corretamente para marcar a aula como concluída e ganhar 1 ponto.</p>
+            <div id="quiz-question" class="quiz-question"></div>
+            <div id="quiz-options" class="quiz-options"></div>
+            <div class="quiz-actions">
+                <button id="quiz-submit" class="quiz-btn submit" type="button" disabled>Enviar resposta</button>
+                <button id="quiz-close" class="quiz-btn cancel" type="button">Cancelar</button>
+            </div>
+            <div id="quiz-feedback" class="quiz-feedback" role="status"></div>
+        </div>
+    </div>
+
+    <style>
+        .quiz-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.55);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .quiz-modal-overlay.open {
+            display: flex;
+        }
+
+        .quiz-modal-card {
+            width: min(520px, 100%);
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+            max-height: 90vh;
+            overflow: auto;
+        }
+
+        .quiz-modal-card h2 {
+            margin-top: 0;
+            color: #0d3c78;
+        }
+
+        .quiz-question {
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .quiz-options {
+            display: grid;
+            gap: 12px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .quiz-option {
+            border: 1px solid #cfd8dc;
+            border-radius: 10px;
+            padding: 14px 16px;
+            cursor: pointer;
+            background: #f7f9fb;
+            transition: border-color 0.2s ease, background 0.2s ease;
+            text-align: left;
+        }
+
+        .quiz-option.selected {
+            border-color: #0056b3;
+            background: #e7f1ff;
+        }
+
+        .quiz-option:hover {
+            border-color: #0056b3;
+        }
+
+        .quiz-actions {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .quiz-btn {
+            border: none;
+            border-radius: 8px;
+            padding: 12px 18px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .quiz-btn.submit {
+            background: #007bff;
+            color: #ffffff;
+        }
+
+        .quiz-btn.cancel {
+            background: #f1f3f5;
+            color: #333333;
+        }
+
+        .quiz-feedback {
+            min-height: 1.5rem;
+            color: #d63384;
+            margin-top: 12px;
+        }
+    </style>
+
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="../js/supabase.js"></script>
-    <script src="../js/aula.js"></script>
+    <script src="../js/quiz.js"></script>
+    <script>
+        // Initialize quiz for this lesson
+        initQuizForAula('Fundamentos da Informatica', 4);
+    </script>
 </body>
 
 </html>

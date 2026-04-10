@@ -41,6 +41,27 @@ async function carregarUsuario() {
     document.getElementById("user-name").innerText = perfil?.nome || "Aluno";
 }
 
+async function carregarPontos() {
+    if (!window._supabase) return;
+
+    const { data: { session } } = await window._supabase.auth.getSession();
+    if (!session) return;
+
+    const { data: perfil } = await window._supabase
+        .from("profiles")
+        .select("pontos")
+        .eq("id", session.user.id)
+        .single();
+
+    const pontosElement = document.getElementById("user-points");
+    if (pontosElement) {
+        pontosElement.innerText = perfil?.pontos || 0;
+    }
+}
+
+// Função global para atualizar pontos (pode ser chamada de outras páginas)
+window.atualizarPontos = carregarPontos;
+
 async function carregarCatalogo() {
     const response = await fetch("data/aulas.json", { cache: "no-store" });
     if (!response.ok) {
@@ -255,6 +276,7 @@ async function init() {
         await carregarUsuario();
         await carregarCatalogo();
         await carregarProgresso();
+        await carregarPontos(); // Atualizar pontos após progresso
         renderizarBotoes();
 
         if (state.moduloAtual) {
