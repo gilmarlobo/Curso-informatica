@@ -115,7 +115,29 @@
     },
     {
       "nome": "PowerPoint",
-      "aulas": []
+      "aulas": [
+        {
+          "numero": 1,
+          "titulo": "História do PowerPoint",
+          "descricao": "Conheça a origem do PowerPoint, sua evolução e curiosidades sobre o uso da ferramenta.",
+          "link": "aulas/aula01_powerpoint.html",
+          "externo": false
+        },
+        {
+          "numero": 2,
+          "titulo": "Conceitos Básicos do PowerPoint",
+          "descricao": "Aprenda o conceito de slide, como trabalhar com caixas de texto e criar novos slides na apresentação.",
+          "link": "aulas/aula02_powerpoint.html",
+          "externo": false
+        },
+        {
+          "numero": 3,
+          "titulo": "Transições e Animações",
+          "descricao": "Domine transições entre slides e animações de objetos, aprendendo quando e como usá-las sem exagerar.",
+          "link": "aulas/aula03_powerpoint.html",
+          "externo": false
+        }
+      ]
     },
     {
       "nome": "Excel",

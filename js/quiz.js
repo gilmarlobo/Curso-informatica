@@ -150,6 +150,38 @@ const quizDatabase = {
             ],
             indiceCorreto: 1
         }
+    },
+    'PowerPoint': {
+        1: {
+            pergunta: 'Qual era o principal objetivo do PowerPoint quando foi lançado?',
+            opcoes: [
+                'Criar planilhas financeiras',
+                'Organizar ideias em slides visuais',
+                'Editar textos longos',
+                'Gerenciar e-mails corporativos'
+            ],
+            indiceCorreto: 1
+        },
+        2: {
+            pergunta: 'O que é um slide no PowerPoint?',
+            opcoes: [
+                'Um arquivo de imagem',
+                'Uma página individual da apresentação',
+                'Um efeito de transição',
+                'Um tipo de gráfico'
+            ],
+            indiceCorreto: 1
+        },
+        3: {
+            pergunta: 'Qual é a principal diferença entre uma transição e uma animação?',
+            opcoes: [
+                'Transições afetam o slide inteiro, animações afetam objetos individuais',
+                'Animações são mais rápidas que transições',
+                'Transições só funcionam em apresentações online',
+                'Não há diferença entre elas'
+            ],
+            indiceCorreto: 0
+        }
     }
 };
 
