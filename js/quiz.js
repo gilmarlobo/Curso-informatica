@@ -203,10 +203,10 @@ const quizDatabase = {
             indiceCorreto: 1
         },
         5: {
-            pergunta: 'Qual recurso é usado para inserir gráficos em uma apresentação?',
+            pergunta: 'Qual recurso é usado para inserir formas geométricas?',
             opcoes: [
                 'Inserir → Tabela',
-                'Inserir → Gráfico',
+                'Inserir → Formas',
                 'Arquivo → Novo',
                 'Exibir → Slide Mestre'
             ],
