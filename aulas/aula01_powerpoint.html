@@ -20,11 +20,11 @@
         <section class="aula-secao">
             <h2>Parte 1: Como nasceu o PowerPoint</h2>
             <div class="video-placeholder">
-                <img src="../img/Mod03_aula01_pp.png"
-                    alt="Ícone do PowerPoint e slides de apresentação">
+                <img src="../img/Mod03_aula01_pp.png" alt="Ícone do PowerPoint e slides de apresentação">
             </div>
             <p>O PowerPoint estreou em 1987 com o nome Presenter, criado para montar slides de apresentação em
-                Macintosh(primeiro computador pessoal de sucesso). Em 1989, a Microsoft comprou a Forethought, empresa que criou o Presenter, e renomeou o produto para PowerPoint, integrando-o
+                Macintosh(primeiro computador pessoal de sucesso). Em 1989, a Microsoft comprou a Forethought, empresa
+                que criou o Presenter, e renomeou o produto para PowerPoint, integrando-o
                 ao conjunto de programas que viria a se tornar o Microsoft Office.</p>
             <p>A ideia central era simples, mas poderosa: ajudar pessoas a organizar ideias de forma visual, usando
                 textos,
@@ -49,11 +49,12 @@
             <p>Atualmente, o PowerPoint permite gravar vídeos, fazer animações, colaborar em nuvem e usar ferramentas de
                 desenho. Ele deixou de ser apenas um editor de slides para ser uma plataforma de comunicação visual.</p>
         </section>
-            <h3>Apresentações e IAs</h3>
-            <p>Com o avanço da inteligência artificial, o PowerPoint agora pode sugerir layouts, gerar conteúdo e até
-                criar apresentações completas a partir de um tema ou texto. Isso torna a criação de slides mais rápida e
-                acessível para todos. Dentre as ferramentas mais famosas temos o <a href="https://gamma.app/pt-br" target="_blank"><strong>Gamma</strong></a>, um site que gera apresentações
-                automaticamente.</p>
+        <h3>Apresentações e IAs</h3>
+        <p>Com o avanço da inteligência artificial, o PowerPoint agora pode sugerir layouts, gerar conteúdo e até
+            criar apresentações completas a partir de um tema ou texto. Isso torna a criação de slides mais rápida e
+            acessível para todos. Dentre as ferramentas mais famosas temos o <a href="https://gamma.app/pt-br"
+                target="_blank"><strong>Gamma</strong></a>, um site que gera apresentações
+            automaticamente.</p>
         </section>
         <section class="aula-secao">
             <h2>Curiosidades sobre o PowerPoint</h2>
@@ -65,8 +66,8 @@
                     organizados.</li>
                 <li>Hoje é possível usar o PowerPoint no navegador, no desktop e no celular, além de compartilhar slides
                     em tempo real.</li>
-                    <li>O PowerPoint é usado por mais de 650 milhões de pessoas por mês no mundo.</li>
-                    <li>O app do PowerPoint já ultrapassou 1 bilhão de downloads só no Android</li>
+                <li>O PowerPoint é usado por mais de 650 milhões de pessoas por mês no mundo.</li>
+                <li>O app do PowerPoint já ultrapassou 1 bilhão de downloads só no Android</li>
             </ul>
             <p>Conhecer a história e as curiosidades ajuda você a usar o PowerPoint com mais criatividade e a aproveitar
                 melhor os recursos da ferramenta.</p>
@@ -92,101 +93,6 @@
             <div id="quiz-feedback" class="quiz-feedback" role="status"></div>
         </div>
     </div>
-
-    <style>
-        .quiz-modal-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.55);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            padding: 20px;
-        }
-
-        .quiz-modal-overlay.open {
-            display: flex;
-        }
-
-        .quiz-modal-card {
-            width: min(520px, 100%);
-            background: #ffffff;
-            border-radius: 16px;
-            padding: 24px;
-            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
-            max-height: 90vh;
-            overflow: auto;
-        }
-
-        .quiz-modal-card h2 {
-            margin-top: 0;
-            color: #0d3c78;
-        }
-
-        .quiz-question {
-            font-weight: 600;
-            margin-bottom: 16px;
-        }
-
-        .quiz-options {
-            display: grid;
-            gap: 12px;
-            margin: 0;
-            padding: 0;
-        }
-
-        .quiz-option {
-            border: 1px solid #cfd8dc;
-            border-radius: 10px;
-            padding: 14px 16px;
-            cursor: pointer;
-            background: #f7f9fb;
-            transition: border-color 0.2s ease, background 0.2s ease;
-            text-align: left;
-        }
-
-        .quiz-option.selected {
-            border-color: #0056b3;
-            background: #e7f1ff;
-        }
-
-        .quiz-option:hover {
-            border-color: #0056b3;
-        }
-
-        .quiz-actions {
-            display: flex;
-            justify-content: space-between;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-
-        .quiz-btn {
-            border: none;
-            border-radius: 8px;
-            padding: 12px 18px;
-            font-size: 1rem;
-            cursor: pointer;
-        }
-
-        .quiz-btn.submit {
-            background: #007bff;
-            color: #ffffff;
-        }
-
-        .quiz-btn.cancel {
-            background: #f1f3f5;
-            color: #333333;
-        }
-
-        .quiz-feedback {
-            min-height: 1.5rem;
-            color: #d63384;
-            margin-top: 12px;
-        }
-    </style>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="../js/supabase.js"></script>

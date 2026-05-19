@@ -21,6 +21,10 @@ function escapeHtml(value) {
         .replaceAll("'", "&#39;");
 }
 
+function mostrarAulaIndisponivel() {
+    alert("Aula ainda não disponível");
+}
+
 async function carregarUsuario() {
     if (!window._supabase) {
         return;
@@ -131,19 +135,29 @@ function renderizarCards(aulas, moduloSelecionado) {
         const descricao = escapeHtml(aula.descricao ?? "");
         const link = escapeHtml(aula.link ?? "#");
         const alvo = aula.externo ? ' target="_blank" rel="noopener noreferrer"' : "";
+        const desabilitado = aula.disabled === true;
 
         const key = `${moduloSelecionado}-${numero}`;
         const concluida = state.progresso.get(key);
-        const classeConcluida = concluida ? ' aula-concluida' : '';
+        const cardClasses = ['aula-card'];
+        if (concluida) cardClasses.push('aula-concluida');
+        if (desabilitado) cardClasses.push('aula-desativada');
+
         const textoConcluida = concluida ? '<div class="status-concluida">Aula concluída</div>' : '';
+        const textoDesabilitada = desabilitado ? '<div class="status-desabilitada">Aula ainda não disponível</div>' : '';
+
+        const botaoAcesso = desabilitado
+            ? '<button type="button" class="btn-acessar btn-disabled" onclick="mostrarAulaIndisponivel()">Acessar aula</button>'
+            : `<a href="${link}" class="btn-acessar"${alvo}>Acessar aula</a>`;
 
         return `
-            <article class="aula-card${classeConcluida}">
+            <article class="${cardClasses.join(' ')}">
                 <div class="aula-badge">Aula ${numero}</div>
                 <h3>${tituloAula}</h3>
                 <p>${descricao}</p>
                 ${textoConcluida}
-                <a href="${link}" class="btn-acessar"${alvo}>Acessar aula</a>
+                ${textoDesabilitada}
+                ${botaoAcesso}
             </article>
         `;
     }).join("");

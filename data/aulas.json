@@ -70,6 +70,13 @@
           "descricao": "Aprenda sobre arquivos executáveis, instalação de programas, Microsoft Store e como usar o Gerenciador de Tarefas para fechar programas travados.",
           "link": "aulas/aula07_so_aplicativos.html",
           "externo": false
+        },
+        {
+          "numero": 4,
+          "titulo": "Configurações importantes do Windows",
+          "descricao": "Conheça as principais configurações do Windows para som, tela, atualizações e segurança.",
+          "link": "aulas/aula04_so_configuracoes_importantes.html",
+          "externo": false
         }
       ]
     },
@@ -136,6 +143,37 @@
           "descricao": "Domine transições entre slides e animações de objetos, aprendendo quando e como usá-las sem exagerar.",
           "link": "aulas/aula03_powerpoint.html",
           "externo": false
+        },
+        {
+          "numero": 4,
+          "titulo": "Modelos, temas e layouts",
+          "descricao": "Aprenda a escolher modelos e temas, ajustar layouts e criar slides visualmente mais profissionais.",
+          "link": "aulas/aula04_powerpoint.html",
+          "externo": false
+        },
+        {
+          "numero": 5,
+          "titulo": "Inserir imagens, formas e vídeos",
+          "descricao": "Saiba como usar imagens, formas, gráficos e vídeos para tornar suas apresentações mais claras e envolventes.",
+          "link": "aulas/aula05_powerpoint.html",
+          "externo": false
+        },
+        {
+          "numero": 6,
+          "titulo": "Slide mestre e identidade visual",
+          "descricao": "Descubra como usar o Slide Mestre para padronizar fontes, cores, rodapés e deixar a apresentação consistente.",
+          "link": "aulas/aula06_powerpoint.html",
+          "externo": false,
+          "disabled": true
+        },
+        {
+          "numero": 7,
+          "titulo": "Apresentação e notas do orador",
+          "descricao": "Aprenda a usar o modo de apresentação, criar e consultar notas e controlar sua apresentação com mais confiança.",
+          "link": "aulas/aula07_powerpoint.html",
+          "externo": false,
+          "disabled": true
+          
         }
       ]
     },

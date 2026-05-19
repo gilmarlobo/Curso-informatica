@@ -282,6 +282,33 @@ body {
     filter: brightness(1.05);
 }
 
+.btn-acessar.btn-disabled,
+.btn-acessar[disabled] {
+    background: #94a3b8;
+    color: #f8fafc;
+    cursor: not-allowed;
+    filter: none;
+}
+
+.btn-acessar.btn-disabled:hover {
+    transform: none;
+}
+
+.aula-card.aula-desativada {
+    opacity: 0.75;
+}
+
+.status-desabilitada {
+    margin-top: 8px;
+    padding: 6px 10px;
+    background: #6b7280;
+    color: #ffffff;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-align: center;
+}
+
 .btn-acessar:active {
     transform: translateY(1px);
 }

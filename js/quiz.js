@@ -97,6 +97,16 @@ const quizDatabase = {
                 'São sinônimos'
             ],
             indiceCorreto: 1
+        },
+        4: { // Aula SO 04 - Configurações importantes do Windows
+            pergunta: 'Qual configuração você deve ajustar para manter o Windows seguro e atualizado?',
+            opcoes: [
+                'Personalização da área de trabalho',
+                'Atualização e Segurança',
+                'Opções de acessibilidade',
+                'Central de Jogos'
+            ],
+            indiceCorreto: 1
         }
     },
     'Word': {
@@ -179,6 +189,46 @@ const quizDatabase = {
                 'Animações são mais rápidas que transições',
                 'Transições só funcionam em apresentações online',
                 'Não há diferença entre elas'
+            ],
+            indiceCorreto: 0
+        },
+        4: {
+            pergunta: 'O que o modelo do PowerPoint inclui além do tema?',
+            opcoes: [
+                'Apenas a cor dos textos',
+                'A estrutura dos slides e espaços reservados',
+                'Somente o modo de apresentação',
+                'Somente a animação dos objetos'
+            ],
+            indiceCorreto: 1
+        },
+        5: {
+            pergunta: 'Qual recurso é usado para inserir gráficos em uma apresentação?',
+            opcoes: [
+                'Inserir → Tabela',
+                'Inserir → Gráfico',
+                'Arquivo → Novo',
+                'Exibir → Slide Mestre'
+            ],
+            indiceCorreto: 1
+        },
+        6: {
+            pergunta: 'Para que serve o Slide Mestre no PowerPoint?',
+            opcoes: [
+                'Alterar apenas o texto do slide atual',
+                'Aplicar estilo e elementos comuns a todos os slides',
+                'Criar animações avançadas',
+                'Inserir vídeos e imagens automaticamente'
+            ],
+            indiceCorreto: 1
+        },
+        7: {
+            pergunta: 'Qual recurso do PowerPoint exibe notas privadas para o apresentador durante a apresentação?',
+            opcoes: [
+                'Notas do orador',
+                'Editor de Texto',
+                'Transição de slide',
+                'Tema de apresentação'
             ],
             indiceCorreto: 0
         }
