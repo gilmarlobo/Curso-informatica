@@ -164,7 +164,7 @@
           "descricao": "Descubra como usar o Slide Mestre para padronizar fontes, cores, rodapés e deixar a apresentação consistente.",
           "link": "aulas/aula06_powerpoint.html",
           "externo": false,
-          "disabled": true
+          "disabled": false
         },
         {
           "numero": 7,

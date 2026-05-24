@@ -5,11 +5,11 @@ const state = {
 };
 
 const monkeyTypeRanking = [
-    { pos: 1, nome: 'Lúcio', wpm: 50, turma: 'Turma B', avatar: 'https://i.pravatar.cc/80?img=12' },
-    { pos: 2, nome: 'Ana Gabriely', wpm: 33, turma: 'Turma B', avatar: 'https://i.pravatar.cc/80?img=32' },
-    { pos: 3, nome: 'Jecivane', wpm: 31, turma: 'Turma A', avatar: 'https://i.pravatar.cc/80?img=8' },
-    { pos: 4, nome: 'Thamyres', wpm: 29, turma: 'Turma C', avatar: 'https://i.pravatar.cc/80?img=48' },
-    { pos: 5, nome: 'Ana Beatriz', wpm: 28, turma: 'Turma A', avatar: 'https://i.pravatar.cc/80?img=10' }
+    { pos: 1, nome: 'Lúcio', wpm: 51, turma: 'Turma B', avatar: 'https://i.pravatar.cc/80?img=12' },
+    { pos: 2, nome: 'João Stefano', wpm: 38, turma: 'Turma B', avatar: 'https://i.pravatar.cc/80?img=32' },
+    { pos: 3, nome: 'Glenda', wpm: 37, turma: 'Turma B', avatar: 'https://i.pravatar.cc/80?img=8' },
+    { pos: 4, nome: 'Luis Henrique', wpm: 36, turma: 'Turma B', avatar: 'https://i.pravatar.cc/80?img=48' },
+    { pos: 5, nome: 'Ana Gabriely', wpm: 33, turma: 'Turma B', avatar: 'https://i.pravatar.cc/80?img=10' }
 ];
 
 function escapeHtml(value) {
@@ -166,11 +166,11 @@ function renderizarCards(aulas, moduloSelecionado) {
         <article class="aula-card campanha-card" onclick="openMonkeyTypeRankingModal()" style="cursor:pointer;">
             <div class="aula-badge">Ranking</div>
             <h3>Ranking MonkeyType</h3>
-            <p>Veja os 5 primeiros colocados no desafio de digitação por velocidade (WPM) do mês de março/2026.</p>
+            <p>Veja os 5 primeiros colocados no desafio de digitação por velocidade (WPM) do mês de maio/2026.</p>
             <div class="campanha-img-wrapper">
                 <img src="img/podio_digitacao.png" alt="MonkeyType" class="campanha-img" />
             </div>
-            <a href="#" class="btn-acessar" onclick="event.preventDefault(); openMonkeyTypeRankingModal();">Ver Podium</a>
+            <a href="#" class="btn-acessar" onclick="event.preventDefault(); openMonkeyTypeRankingModal();">Ver Podium Atualizado</a>
         </article>
     `;
 
