@@ -166,7 +166,6 @@ function renderizarCards(aulas, moduloSelecionado) {
         <article class="aula-card campanha-card" onclick="openMonkeyTypeRankingModal()" style="cursor:pointer;">
             <div class="aula-badge">Ranking</div>
             <h3>Ranking MonkeyType</h3>
-            <p>Veja os 5 primeiros colocados no desafio de digitação por velocidade (WPM) do mês de maio/2026.</p>
             <div class="campanha-img-wrapper">
                 <img src="img/podio_digitacao.png" alt="MonkeyType" class="campanha-img" />
             </div>
