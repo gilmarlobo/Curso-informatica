@@ -172,7 +172,7 @@
           "descricao": "Aprenda a usar o modo de apresentação, criar e consultar notas e controlar sua apresentação com mais confiança.",
           "link": "aulas/aula07_powerpoint.html",
           "externo": false,
-          "disabled": true
+          "disabled": false
           
         }
       ]
