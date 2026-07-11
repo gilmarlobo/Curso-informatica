@@ -22,34 +22,37 @@
         </header>
 
         <section class="aula-secao">
-            <h2>O que são funções</h2>
+            <h2>O que é uma função</h2>
             <div class="video-placeholder">
                 <img src="../img/excel_aula04.png" alt="Exemplo de funções SOMA e MÉDIA no Excel">
             </div>
-            <p>Funções são fórmulas pré-definidas que facilitam cálculos comuns. Elas economizam tempo e evitam erros
-                quando você precisa lidar com muitas células.</p>
-            <p>As funções mais usadas no Excel são aquela que somam, calculam a média e identificam o maior e o menor
-                valor de um conjunto de dados.</p>
+            <p>Uma <strong>função</strong> é uma fórmula pronta, criada pelo Excel para resolver operações comuns sem
+                que você precise escrever tudo manualmente. Em vez de somar célula por célula com o sinal de
+                <code>+</code>, você entrega ao Excel um <strong>intervalo</strong> de células, e ele faz o cálculo
+                inteiro de uma vez.</p>
+            <p>Toda função segue a mesma estrutura básica: <code>=NOME_DA_FUNÇÃO(argumento)</code>. O argumento é a
+                informação que a função precisa para trabalhar — geralmente um intervalo de células, como
+                <code>A1:A10</code>.</p>
+            <blockquote>
+                <p><strong>Curiosidade:</strong> O símbolo de dois pontos <strong>:</strong> dentro de um intervalo,
+                    como em <code>A1:A10</code>, significa "até".</p>
+            </blockquote>
         </section>
 
         <section class="aula-secao">
-            <h2>As principais funções</h2>
+            <h2>SOMA, MÉDIA, MÁXIMO e MÍNIMO</h2>
             <ul>
-                <li><strong>SOMA</strong>: soma os valores de um intervalo.</li>
-                <li><strong>MÉDIA</strong>: calcula a média aritmética.</li>
-                <li><strong>MÁXIMO</strong>: retorna o maior valor encontrado.</li>
-                <li><strong>MÍNIMO</strong>: retorna o menor valor encontrado.</li>
+                <li><strong>SOMA</strong>: adiciona todos os valores de um intervalo. Exemplo:
+                    <code>=SOMA(B2:B15)</code>.</li>
+                <li><strong>MÉDIA</strong>: calcula a média aritmética. Exemplo: <code>=MÉDIA(B2:B15)</code>.</li>
+                <li><strong>MÁXIMO</strong>: retorna o maior valor. Exemplo: <code>=MÁXIMO(B2:B15)</code>.</li>
+                <li><strong>MÍNIMO</strong>: retorna o menor valor. Exemplo: <code>=MÍNIMO(B2:B15)</code>.</li>
             </ul>
-            <p>Exemplos:</p>
-            <ul>
-                <li><strong>=SOMA(A1:A10)</strong></li>
-                <li><strong>=MÉDIA(B1:B10)</strong></li>
-                <li><strong>=MÁXIMO(C1:C10)</strong></li>
-                <li><strong>=MÍNIMO(C1:C10)</strong></li>
-            </ul>
+            <p>Essas funções são especialmente úteis para identificar rapidamente o melhor e o pior resultado dentro de
+                um conjunto grande de dados, sem precisar procurar manualmente linha por linha.</p>
             <blockquote>
-                <p><strong>Dica:</strong> O botão AutoSoma, representado por Σ, ajuda a inserir funções rapidamente na
-                    planilha.</p>
+                <p><strong>Dica:</strong> O botão <strong>AutoSoma</strong>, representado por Σ, ajuda a inserir funções
+                    rapidamente na planilha.</p>
             </blockquote>
         </section>
 

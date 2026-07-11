@@ -22,30 +22,48 @@
         </header>
 
         <section class="aula-secao">
-            <h2>Estrutura básica de uma planilha</h2>
+            <h2>Planilha, pasta de trabalho e célula</h2>
             <div class="video-placeholder">
                 <img src="../img/excel_aula02.png" alt="Estrutura de uma planilha do Excel com linhas e colunas">
             </div>
-            <p>Uma planilha do Excel é formada por linhas, colunas e células. Cada célula recebe um valor, um texto ou
-                uma fórmula. A combinação delas forma uma tabela organizada.</p>
-            <p>O Excel também trabalha com pastas de trabalho, que podem ter várias planilhas. Isso permite separar
-                informações por temas, como vendas, despesas ou estoque.</p>
+            <p>É comum usar a palavra "planilha" para se referir a tudo dentro do Excel, mas existem três conceitos
+                diferentes escondidos nesse termo:</p>
+            <ul>
+                <li><strong>Pasta de trabalho</strong> — é o arquivo <code>.xlsx</code> como um todo, o que você salva
+                    no computador;</li>
+                <li><strong>Planilha</strong> — é cada uma das abas dentro do arquivo, geralmente vistas na parte
+                    inferior da tela;</li>
+                <li><strong>Célula</strong> — é o menor espaço dentro da planilha, formado pelo cruzamento de uma linha
+                    com uma coluna.</li>
+            </ul>
+            <p>Cada célula tem um endereço único, formado pela letra da coluna e o número da linha — como
+                <strong>A1</strong>, <strong>B7</strong> ou <strong>D23</strong>.</p>
+            <blockquote>
+                <p><strong>Curiosidade:</strong> Uma planilha do Excel tem, atualmente, <strong>1.048.576
+                        linhas</strong> e <strong>16.384 colunas</strong>.</p>
+            </blockquote>
         </section>
 
         <section class="aula-secao">
-            <h2>Tipos de dados no Excel</h2>
-            <p>Nem todo conteúdo que aparece na célula é tratado da mesma forma. O Excel distingue entre números,
-                textos, datas e valores lógicos.</p>
+            <h2>Por que o tipo de dado importa</h2>
+            <p>Um erro comum de quem está começando é tratar tudo como se fosse a mesma coisa: só "informação digitada
+                na célula". Mas o Excel enxerga tipos de dados diferentes, e essa distinção é o que faz fórmulas
+                funcionarem — ou quebrarem.</p>
+            <p>Se o Excel entende um número como texto, por exemplo, ele simplesmente não vai conseguir somá-lo. Por
+                isso, reconhecer os tipos de dados é uma das primeiras habilidades que separam quem "mexe no Excel" de
+                quem realmente entende o Excel.</p>
+            <h3>Os principais tipos de dados</h3>
             <ul>
-                <li><strong>Números:</strong> usados em cálculos matemáticos.</li>
-                <li><strong>Texto:</strong> palavras, nomes e descrições.</li>
-                <li><strong>Datas:</strong> valores que o Excel reconhece como calendário.</li>
-                <li><strong>Valores lógicos:</strong> verdadeiro ou falso, usados em fórmulas condicionais.</li>
+                <li><strong>Texto:</strong> Maria, Zé Doca, Produto A;</li>
+                <li><strong>Número:</strong> 150, 3,14, -20;</li>
+                <li><strong>Data:</strong> 11/07/2026;</li>
+                <li><strong>Hora:</strong> 14:30;</li>
+                <li><strong>Moeda:</strong> R$ 1.250,00;</li>
+                <li><strong>Percentual:</strong> 25%;</li>
+                <li><strong>Lógico:</strong> VERDADEIRO / FALSO.</li>
             </ul>
-            <p>Um erro comum acontece quando um número é digitado como texto. Nesse caso, o Excel pode não somar
-                corretamente os valores.</p>
             <blockquote>
-                <p><strong>Dica:</strong> Se um número estiver alinhado à esquerda, pode ser um sinal de que o Excel o
+                <p><strong>Dica:</strong> Se um número aparecer alinhado à esquerda, pode ser um sinal de que o Excel o
                     interpretou como texto.</p>
             </blockquote>
         </section>
