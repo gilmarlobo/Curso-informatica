@@ -232,6 +232,58 @@ const quizDatabase = {
             ],
             indiceCorreto: 0
         }
+    },
+    'Excel': {
+        1: {
+            pergunta: 'Qual é a principal função do Excel no dia a dia?',
+            opcoes: [
+                'Criar apresentações de slides',
+                'Organizar, calcular e analisar dados em planilhas',
+                'Editar vídeos',
+                'Navegar na internet'
+            ],
+            indiceCorreto: 1
+        },
+        2: {
+            pergunta: 'O que é uma célula no Excel?',
+            opcoes: [
+                'Uma pasta com vários arquivos',
+                'A interseção entre uma linha e uma coluna',
+                'Um tipo de gráfico',
+                'Um botão de formatação'
+            ],
+            indiceCorreto: 1
+        },
+        3: {
+            pergunta: 'O que torna uma planilha dinâmica no Excel?',
+            opcoes: [
+                'Ela permite salvar arquivos em PDF',
+                'Ela recalcula automaticamente quando um valor muda',
+                'Ela só funciona com imagens',
+                'Ela não aceita fórmulas'
+            ],
+            indiceCorreto: 1
+        },
+        4: {
+            pergunta: 'Qual função é usada para somar valores em um intervalo do Excel?',
+            opcoes: [
+                '=MÉDIA(A1:A10)',
+                '=MÁXIMO(A1:A10)',
+                '=SOMA(A1:A10)',
+                '=SE(A1:A10)'
+            ],
+            indiceCorreto: 2
+        },
+        5: {
+            pergunta: 'Para que servem os filtros em uma tabela do Excel?',
+            opcoes: [
+                'Para apagar dados automaticamente',
+                'Para esconder a planilha inteira',
+                'Para mostrar apenas os dados que atendem a um critério',
+                'Para criar novas pastas de trabalho'
+            ],
+            indiceCorreto: 2
+        }
     }
 };
 
