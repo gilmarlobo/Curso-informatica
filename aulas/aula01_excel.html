@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 01 - História e importância do Excel</title>
+    <link rel="stylesheet" href="../css/aulas.css">
+</head>
+
+<body>
+    <div class="aula-container">
+        <header class="aula-header">
+            <button onclick="window.history.back()" class="btn-voltar">
+                &larr; Voltar para as Aulas
+            </button>
+            <h1>Aula 01: História e importância do Excel</h1>
+            <blockquote>
+                <p><em>Antes do Excel, muitas contas eram feitas à mão em papel quadriculado. O surgimento das planilhas
+                        eletrônicas mudou para sempre a forma de trabalhar com números.</em></p>
+            </blockquote>
+        </header>
+
+        <section class="aula-secao">
+            <h2>Por que o Excel surgiu</h2>
+            <div class="video-placeholder">
+                <img src="../img/excel_aula01.png" alt="Interface do Excel com uma planilha aberta">
+            </div>
+            <p>O Excel nasceu da necessidade de calcular, organizar e revisar informações de forma mais rápida do que os
+                métodos manuais. Antes dele, empresas dependiam de planilhas de papel, contas feitas à mão e muita
+                chance de erro.</p>
+            <p>Com o avanço da tecnologia, surgiu a ideia de um programa que permitisse alterar números, criar fórmulas
+                e recalcular automaticamente tudo que dependesse daquela informação.</p>
+            <blockquote>
+                <p><strong>Curiosidade:</strong> Antes do Excel, programas como o VisiCalc já mostravam o potencial das
+                    planilhas eletrônicas. O Excel acabou se consolidando por reunir facilidade, recursos e
+                    compatibilidade com os ambientes de trabalho.</p>
+            </blockquote>
+        </section>
+
+        <section class="aula-secao">
+            <h2>Por que ele ainda é tão usado</h2>
+            <p>Mesmo com ferramentas novas, o Excel continua presente porque resolve problemas de forma prática e
+                acessível. Ele é usado em finanças, vendas, logística, recursos humanos, educação e até em atividades
+                pessoais.</p>
+            <p>O grande diferencial está em sua capacidade de transformar dados em informações úteis. Com poucos
+                cliques, você consegue organizar uma lista, calcular valores e montar relatórios.</p>
+            <ul>
+                <li>Facilidade para organizar dados em linhas e colunas;</li>
+                <li>Automatização de cálculos por meio de fórmulas;</li>
+                <li>Criação de gráficos e resumos visuais;</li>
+                <li>Ampla presença no mercado de trabalho.</li>
+            </ul>
+        </section>
+
+        <footer class="aula-footer">
+            <button id="btn-concluir" class="btn-concluir">Realizar Quiz</button>
+            <p>&copy; 2026 Curso de Informática básica. Todos os direitos reservados.</p>
+        </footer>
+    </div>
+
+    <div id="quiz-modal" class="quiz-modal-overlay" aria-modal="true" role="dialog" aria-labelledby="quiz-title">
+        <div class="quiz-modal-card">
+            <h2 id="quiz-title">Pergunta de Verificação</h2>
+            <p>Responda corretamente para marcar a aula como concluída e ganhar 1 ponto.</p>
+            <div id="quiz-question" class="quiz-question"></div>
+            <div id="quiz-options" class="quiz-options"></div>
+            <div class="quiz-actions">
+                <button id="quiz-submit" class="quiz-btn submit" type="button" disabled>Enviar resposta</button>
+                <button id="quiz-close" class="quiz-btn cancel" type="button">Cancelar</button>
+            </div>
+            <div id="quiz-feedback" class="quiz-feedback" role="status"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/supabase.js"></script>
+    <script src="../js/quiz.js"></script>
+    <script>
+        initQuizForAula('Excel', 1);
+    </script>
+</body>
+
+</html>

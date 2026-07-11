@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 05 - Tabelas e filtros no Excel</title>
+    <link rel="stylesheet" href="../css/aulas.css">
+</head>
+
+<body>
+    <div class="aula-container">
+        <header class="aula-header">
+            <button onclick="window.history.back()" class="btn-voltar">
+                &larr; Voltar para as Aulas
+            </button>
+            <h1>Aula 05: Tabelas e filtros no Excel</h1>
+            <blockquote>
+                <p><em>Organizar dados soltos em uma tabela faz toda a diferença. Com filtros, você encontra rapidamente
+                        o que precisa sem perder a estrutura da planilha.</em></p>
+            </blockquote>
+        </header>
+
+        <section class="aula-secao">
+            <h2>Transformando dados em tabela</h2>
+            <div class="video-placeholder">
+                <img src="../img/excel_aula05.png" alt="Exemplo de tabela e filtros no Excel">
+            </div>
+            <p>Quando você organiza um conjunto de dados em uma tabela, o Excel passa a tratá-lo como uma estrutura mais
+                inteligente. Isso facilita a filtragem, formatação e análise.</p>
+            <p>Ao converter um intervalo em tabela, você ganha recursos como autoexpansão, formatação automática e
+                filtros prontos para cada coluna.</p>
+        </section>
+
+        <section class="aula-secao">
+            <h2>Usando filtros</h2>
+            <p>Filtros permitem mostrar apenas os dados que atendem a determinado critério. Você pode filtrar por texto,
+                números, datas e valores específicos.</p>
+            <p>Essa ferramenta é muito útil quando sua planilha começa a ficar grande e você precisa localizar
+                informações rapidamente.</p>
+            <blockquote>
+                <p><strong>Dica:</strong> Use filtros condicionais quando quiser localizar valores acima de um limite,
+                    iguais a um texto ou dentro de um intervalo de datas.</p>
+            </blockquote>
+        </section>
+
+        <footer class="aula-footer">
+            <button id="btn-concluir" class="btn-concluir">Realizar Quiz</button>
+            <p>&copy; 2026 Curso de Informática básica. Todos os direitos reservados.</p>
+        </footer>
+    </div>
+
+    <div id="quiz-modal" class="quiz-modal-overlay" aria-modal="true" role="dialog" aria-labelledby="quiz-title">
+        <div class="quiz-modal-card">
+            <h2 id="quiz-title">Pergunta de Verificação</h2>
+            <p>Responda corretamente para marcar a aula como concluída e ganhar 1 ponto.</p>
+            <div id="quiz-question" class="quiz-question"></div>
+            <div id="quiz-options" class="quiz-options"></div>
+            <div class="quiz-actions">
+                <button id="quiz-submit" class="quiz-btn submit" type="button" disabled>Enviar resposta</button>
+                <button id="quiz-close" class="quiz-btn cancel" type="button">Cancelar</button>
+            </div>
+            <div id="quiz-feedback" class="quiz-feedback" role="status"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/supabase.js"></script>
+    <script src="../js/quiz.js"></script>
+    <script>
+        initQuizForAula('Excel', 5);
+    </script>
+</body>
+
+</html>

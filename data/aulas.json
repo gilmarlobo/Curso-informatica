@@ -173,13 +173,48 @@
           "link": "aulas/aula07_powerpoint.html",
           "externo": false,
           "disabled": false
-          
         }
       ]
     },
     {
       "nome": "Excel",
-      "aulas": []
+      "aulas": [
+        {
+          "numero": 1,
+          "titulo": "História e importância do Excel",
+          "descricao": "Conheça a origem do Excel e por que essa ferramenta continua tão importante no mercado de trabalho.",
+          "link": "aulas/aula01_excel.html",
+          "externo": false
+        },
+        {
+          "numero": 2,
+          "titulo": "Planilha, células e tipos de dados",
+          "descricao": "Entenda a estrutura de uma planilha e como o Excel diferencia números, textos e datas.",
+          "link": "aulas/aula02_excel.html",
+          "externo": false
+        },
+        {
+          "numero": 3,
+          "titulo": "Planilhas dinâmicas e operações básicas",
+          "descricao": "Aprenda a criar fórmulas e a usar o dinamismo do Excel para recalcular automaticamente os resultados.",
+          "link": "aulas/aula03_excel.html",
+          "externo": false
+        },
+        {
+          "numero": 4,
+          "titulo": "Funções SOMA, MÉDIA, MÁXIMO e MÍNIMO",
+          "descricao": "Domine as funções mais usadas para somar, calcular médias e encontrar valores extremos.",
+          "link": "aulas/aula04_excel.html",
+          "externo": false
+        },
+        {
+          "numero": 5,
+          "titulo": "Tabelas e filtros no Excel",
+          "descricao": "Aprenda a transformar dados em tabelas e a usar filtros para localizar informações com rapidez.",
+          "link": "aulas/aula05_excel.html",
+          "externo": false
+        }
+      ]
     },
     {
       "nome": "Internet",

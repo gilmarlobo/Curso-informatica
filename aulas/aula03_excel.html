@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 03 - Planilhas dinâmicas e operações básicas</title>
+    <link rel="stylesheet" href="../css/aulas.css">
+</head>
+
+<body>
+    <div class="aula-container">
+        <header class="aula-header">
+            <button onclick="window.history.back()" class="btn-voltar">
+                &larr; Voltar para as Aulas
+            </button>
+            <h1>Aula 03: Planilhas dinâmicas e operações básicas</h1>
+            <blockquote>
+                <p><em>O Excel se destaca por recalcular automaticamente os resultados quando algum valor muda. Esse
+                        recurso torna a planilha muito mais dinâmica e útil.</em></p>
+            </blockquote>
+        </header>
+
+        <section class="aula-secao">
+            <h2>O que torna a planilha dinâmica</h2>
+            <div class="video-placeholder">
+                <img src="../img/excel_aula03.png" alt="Exemplo de fórmula no Excel com cálculo automático">
+            </div>
+            <p>Uma planilha estática contém valores fixos, enquanto uma planilha dinâmica recalcula automaticamente os
+                resultados quando alguma célula muda.</p>
+            <p>Essa lógica é possível porque o Excel possui um motor de cálculo que atualiza as fórmulas conectadas aos
+                valores alterados.</p>
+        </section>
+
+        <section class="aula-secao">
+            <h2>Como criar fórmulas</h2>
+            <p>Toda fórmula no Excel começa com o sinal de igual. A partir daí, você pode somar, subtrair, multiplicar
+                ou combinar operadores matemáticos.</p>
+            <p>Exemplos comuns:</p>
+            <ul>
+                <li><strong>=A1+B1</strong> para somar;</li>
+                <li><strong>=A1-B1</strong> para subtrair;</li>
+                <li><strong>=A1*B1</strong> para multiplicar;</li>
+                <li><strong>=A1/B1</strong> para dividir.</li>
+            </ul>
+            <p>Ao arrastar uma fórmula para baixo ou para o lado, o Excel ajusta automaticamente as referências, o que
+                facilita a reprodução de cálculos em várias linhas.</p>
+            <blockquote>
+                <p><strong>Dica:</strong> A tecla F4 ajuda a alternar entre referências relativas e absolutas dentro de
+                    uma fórmula.</p>
+            </blockquote>
+        </section>
+
+        <footer class="aula-footer">
+            <button id="btn-concluir" class="btn-concluir">Realizar Quiz</button>
+            <p>&copy; 2026 Curso de Informática básica. Todos os direitos reservados.</p>
+        </footer>
+    </div>
+
+    <div id="quiz-modal" class="quiz-modal-overlay" aria-modal="true" role="dialog" aria-labelledby="quiz-title">
+        <div class="quiz-modal-card">
+            <h2 id="quiz-title">Pergunta de Verificação</h2>
+            <p>Responda corretamente para marcar a aula como concluída e ganhar 1 ponto.</p>
+            <div id="quiz-question" class="quiz-question"></div>
+            <div id="quiz-options" class="quiz-options"></div>
+            <div class="quiz-actions">
+                <button id="quiz-submit" class="quiz-btn submit" type="button" disabled>Enviar resposta</button>
+                <button id="quiz-close" class="quiz-btn cancel" type="button">Cancelar</button>
+            </div>
+            <div id="quiz-feedback" class="quiz-feedback" role="status"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/supabase.js"></script>
+    <script src="../js/quiz.js"></script>
+    <script>
+        initQuizForAula('Excel', 3);
+    </script>
+</body>
+
+</html>

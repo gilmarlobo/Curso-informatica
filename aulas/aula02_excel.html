@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 02 - Planilha, células e tipos de dados</title>
+    <link rel="stylesheet" href="../css/aulas.css">
+</head>
+
+<body>
+    <div class="aula-container">
+        <header class="aula-header">
+            <button onclick="window.history.back()" class="btn-voltar">
+                &larr; Voltar para as Aulas
+            </button>
+            <h1>Aula 02: Planilha, células e tipos de dados</h1>
+            <blockquote>
+                <p><em>O Excel funciona como uma grande grade de informações. Para usar bem o programa, é fundamental
+                        entender como a planilha é organizada.</em></p>
+            </blockquote>
+        </header>
+
+        <section class="aula-secao">
+            <h2>Estrutura básica de uma planilha</h2>
+            <div class="video-placeholder">
+                <img src="../img/excel_aula02.png" alt="Estrutura de uma planilha do Excel com linhas e colunas">
+            </div>
+            <p>Uma planilha do Excel é formada por linhas, colunas e células. Cada célula recebe um valor, um texto ou
+                uma fórmula. A combinação delas forma uma tabela organizada.</p>
+            <p>O Excel também trabalha com pastas de trabalho, que podem ter várias planilhas. Isso permite separar
+                informações por temas, como vendas, despesas ou estoque.</p>
+        </section>
+
+        <section class="aula-secao">
+            <h2>Tipos de dados no Excel</h2>
+            <p>Nem todo conteúdo que aparece na célula é tratado da mesma forma. O Excel distingue entre números,
+                textos, datas e valores lógicos.</p>
+            <ul>
+                <li><strong>Números:</strong> usados em cálculos matemáticos.</li>
+                <li><strong>Texto:</strong> palavras, nomes e descrições.</li>
+                <li><strong>Datas:</strong> valores que o Excel reconhece como calendário.</li>
+                <li><strong>Valores lógicos:</strong> verdadeiro ou falso, usados em fórmulas condicionais.</li>
+            </ul>
+            <p>Um erro comum acontece quando um número é digitado como texto. Nesse caso, o Excel pode não somar
+                corretamente os valores.</p>
+            <blockquote>
+                <p><strong>Dica:</strong> Se um número estiver alinhado à esquerda, pode ser um sinal de que o Excel o
+                    interpretou como texto.</p>
+            </blockquote>
+        </section>
+
+        <footer class="aula-footer">
+            <button id="btn-concluir" class="btn-concluir">Realizar Quiz</button>
+            <p>&copy; 2026 Curso de Informática básica. Todos os direitos reservados.</p>
+        </footer>
+    </div>
+
+    <div id="quiz-modal" class="quiz-modal-overlay" aria-modal="true" role="dialog" aria-labelledby="quiz-title">
+        <div class="quiz-modal-card">
+            <h2 id="quiz-title">Pergunta de Verificação</h2>
+            <p>Responda corretamente para marcar a aula como concluída e ganhar 1 ponto.</p>
+            <div id="quiz-question" class="quiz-question"></div>
+            <div id="quiz-options" class="quiz-options"></div>
+            <div class="quiz-actions">
+                <button id="quiz-submit" class="quiz-btn submit" type="button" disabled>Enviar resposta</button>
+                <button id="quiz-close" class="quiz-btn cancel" type="button">Cancelar</button>
+            </div>
+            <div id="quiz-feedback" class="quiz-feedback" role="status"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/supabase.js"></script>
+    <script src="../js/quiz.js"></script>
+    <script>
+        initQuizForAula('Excel', 2);
+    </script>
+</body>
+
+</html>

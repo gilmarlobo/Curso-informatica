@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 04 - Funções SOMA, MÉDIA, MÁXIMO e MÍNIMO</title>
+    <link rel="stylesheet" href="../css/aulas.css">
+</head>
+
+<body>
+    <div class="aula-container">
+        <header class="aula-header">
+            <button onclick="window.history.back()" class="btn-voltar">
+                &larr; Voltar para as Aulas
+            </button>
+            <h1>Aula 04: Funções SOMA, MÉDIA, MÁXIMO e MÍNIMO</h1>
+            <blockquote>
+                <p><em>Em vez de escrever operações longas manualmente, o Excel oferece funções prontas para resolver os
+                        cálculos mais usados no dia a dia.</em></p>
+            </blockquote>
+        </header>
+
+        <section class="aula-secao">
+            <h2>O que são funções</h2>
+            <div class="video-placeholder">
+                <img src="../img/excel_aula04.png" alt="Exemplo de funções SOMA e MÉDIA no Excel">
+            </div>
+            <p>Funções são fórmulas pré-definidas que facilitam cálculos comuns. Elas economizam tempo e evitam erros
+                quando você precisa lidar com muitas células.</p>
+            <p>As funções mais usadas no Excel são aquela que somam, calculam a média e identificam o maior e o menor
+                valor de um conjunto de dados.</p>
+        </section>
+
+        <section class="aula-secao">
+            <h2>As principais funções</h2>
+            <ul>
+                <li><strong>SOMA</strong>: soma os valores de um intervalo.</li>
+                <li><strong>MÉDIA</strong>: calcula a média aritmética.</li>
+                <li><strong>MÁXIMO</strong>: retorna o maior valor encontrado.</li>
+                <li><strong>MÍNIMO</strong>: retorna o menor valor encontrado.</li>
+            </ul>
+            <p>Exemplos:</p>
+            <ul>
+                <li><strong>=SOMA(A1:A10)</strong></li>
+                <li><strong>=MÉDIA(B1:B10)</strong></li>
+                <li><strong>=MÁXIMO(C1:C10)</strong></li>
+                <li><strong>=MÍNIMO(C1:C10)</strong></li>
+            </ul>
+            <blockquote>
+                <p><strong>Dica:</strong> O botão AutoSoma, representado por Σ, ajuda a inserir funções rapidamente na
+                    planilha.</p>
+            </blockquote>
+        </section>
+
+        <footer class="aula-footer">
+            <button id="btn-concluir" class="btn-concluir">Realizar Quiz</button>
+            <p>&copy; 2026 Curso de Informática básica. Todos os direitos reservados.</p>
+        </footer>
+    </div>
+
+    <div id="quiz-modal" class="quiz-modal-overlay" aria-modal="true" role="dialog" aria-labelledby="quiz-title">
+        <div class="quiz-modal-card">
+            <h2 id="quiz-title">Pergunta de Verificação</h2>
+            <p>Responda corretamente para marcar a aula como concluída e ganhar 1 ponto.</p>
+            <div id="quiz-question" class="quiz-question"></div>
+            <div id="quiz-options" class="quiz-options"></div>
+            <div class="quiz-actions">
+                <button id="quiz-submit" class="quiz-btn submit" type="button" disabled>Enviar resposta</button>
+                <button id="quiz-close" class="quiz-btn cancel" type="button">Cancelar</button>
+            </div>
+            <div id="quiz-feedback" class="quiz-feedback" role="status"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/supabase.js"></script>
+    <script src="../js/quiz.js"></script>
+    <script>
+        initQuizForAula('Excel', 4);
+    </script>
+</body>
+
+</html>
