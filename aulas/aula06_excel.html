@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 06 - Formatação condicional e a função SE</title>
+    <link rel="stylesheet" href="../css/aulas.css">
+</head>
+
+<body>
+    <div class="aula-container">
+        <header class="aula-header">
+            <button onclick="window.history.back()" class="btn-voltar">
+                &larr; Voltar para as Aulas
+            </button>
+            <h1>Aula 06: Formatação Condicional e a Função SE</h1>
+            <blockquote>
+                <p><em>Duas planilhas podem ter os mesmos números e ainda contar histórias completamente diferentes. Com
+                        a formatação condicional, o Excel destaca informações automaticamente; com a função SE, ele toma
+                        decisões.</em></p>
+            </blockquote>
+            <div class="video-placeholder">
+                <img src="../img/SE.png" alt="Exemplo de funções SOMA e MÉDIA no Excel">
+            </div>
+        </header>
+
+        <section class="aula-secao">
+            <h2>Formatação condicional: quando a cor vira informação</h2>
+            
+            <div class="video-placeholder">
+                <img src="../img/aula06_formatacao_condicional.png" alt="Exemplo de funções SOMA e MÉDIA no Excel">
+            </div>
+            <p>A <strong>Formatação Condicional</strong> permite que o Excel altere a aparência de uma célula com base
+                no valor que ela contém. Em vez de olhar número por número, a própria planilha chama atenção para o que
+                merece destaque.</p>
+            <p>Para aplicar, selecione o intervalo desejado e acesse <strong>Página Inicial → Formatação
+                    Condicional</strong>.</p>
+            <blockquote>
+                <p><strong>Curiosidade:</strong> Esse recurso nasceu com o Excel 97, mas só ganhou as escalas de cor,
+                    barras e ícones modernos a partir do Excel 2007.</p>
+            </blockquote>
+        </section>
+
+        <section class="aula-secao">
+            <h2>As três famílias de regras mais usadas</h2>
+            
+            <p>O Excel organiza a formatação condicional em grupos bem práticos:</p>
+            <ul>
+                <li><strong>Realçar Regras das Células</strong>: destaca valores maiores que, menores que, entre,
+                    duplicados ou que contenham um texto específico;</li>
+                <li><strong>Regras de Primeiros/Últimos</strong>: destaca os 10 primeiros valores, os 10% últimos,
+                    valores acima da média, entre outros;</li>
+                <li><strong>Barras de Dados, Escalas de Cor e Conjuntos de Ícones</strong>: transformam os números em
+                    pequenos gráficos visuais.</li>
+            </ul>
+            <blockquote>
+                <p><strong>Dica:</strong> Barras de dados são muito úteis em planilhas de notas ou vendas, porque ajudam
+                    a comparar valores rapidamente sem precisar de um gráfico separado.</p>
+            </blockquote>
+        </section>
+
+        <section class="aula-secao">
+            <h2>Criando uma regra personalizada com fórmula</h2>
+            
+            <p>Além das opções prontas, é possível criar uma regra baseada em uma fórmula própria, na opção <strong>Nova
+                    Regra → Usar uma fórmula para determinar quais células devem ser formatadas</strong>. Isso permite
+                condições muito mais específicas.</p>
+            <blockquote>
+                <p><strong>Curiosidade:</strong> Quando a regra é criada com fórmula, o Excel avalia a condição como um
+                    teste lógico que retorna VERDADEIRO ou FALSO — o mesmo raciocínio usado pela função SE.</p>
+            </blockquote>
+            <blockquote>
+                <p>Dentre os testes lógicos que retornam VERDADEIRO ou FALSO, alguns exemplos comuns são:</p>
+                <ul>
+                    <li><code>=B2=6</code> — verifica se o valor em B2 é igual a 6;</li>
+                    <li><code>=B2&lt;6</code> — verifica se o valor em B2 é menor que 6;</li>
+                    <li><code>=B2&gt;6</code> — verifica se o valor em B2 é maior que 6;</li>
+                    <li><code>=B2&gt;=6</code> — verifica se o valor em B2 é maior ou igual a 6;</li>
+                    <li><code>=B2&lt;&gt;"Texto"</code> — verifica se o valor em B2 é diferente de "Texto";</li>
+                    <li><code>=E(B2&gt;=6; C2="Sim")</code> — verifica se B2 é maior ou igual a 6 E C2 é igual a "Sim".</li>
+                </ul>   
+            </blockquote>
+        </section>
+
+        <section class="aula-secao"
+            <h2>A função SE: fazendo o Excel tomar decisões</h2>
+            <div class="video-placeholder">
+                <img src="../img/funcao_se.png" alt="Exemplo de funções SOMA e MÉDIA no Excel">
+            </div>
+            <p>Se a formatação condicional muda a aparência, a <strong>função SE</strong> muda o resultado que aparece
+                na célula, dependendo de uma condição. A estrutura básica é:</p>
+            <pre><code>=SE(teste_lógico; valor_se_verdadeiro; valor_se_falso)</code></pre>
+            <p>Por exemplo, para indicar se um aluno foi aprovado com base na média da célula B2, a fórmula seria:</p>
+            <pre><code>=SE(B2&gt;=6; "Aprovado"; "Reprovado")</code></pre>
+            <p>O Excel avalia se B2 é maior ou igual a 6. Se for verdadeiro, escreve “Aprovado”; se for falso, escreve
+                “Reprovado”.</p>
+            <blockquote>
+                <p><strong>Dica:</strong> Textos usados como resultado precisam ficar entre aspas. Números e outras
+                    fórmulas entram sem aspas.</p>
+            </blockquote>
+        </section>
+
+        <section class="aula-secao">
+            <h2>Combinando várias condições</h2>
+            <p>Quando uma condição não é suficiente, há duas estratégias comuns:</p>
+            <ul>
+                <li><strong>SE aninhado</strong>: usar um SE dentro do outro para criar mais de dois resultados;</li>
+                <li><strong>Funções E() e OU()</strong>: usadas no teste lógico para exigir que várias condições sejam
+                    verdadeiras ou que pelo menos uma seja.</li>
+            </ul>
+            <pre><code>=SE(B2&gt;=8; "Ótimo"; SE(B2&gt;=6; "Bom"; "Precisa melhorar"))</code></pre>
+        </section>
+
+        <section class="aula-secao">
+            <h2>Formatação condicional e função SE trabalhando juntas</h2>
+            <p>As duas ferramentas se completam muito bem em uma planilha real. Um uso comum é usar a função SE em uma
+                coluna auxiliar para classificar cada linha, por exemplo, em “Aprovado” ou “Reprovado”, e depois aplicar
+                uma Formatação Condicional baseada em texto para colorir automaticamente a célula.</p>
+            <blockquote>
+                <p><strong>Dica:</strong> Use a regra <strong>Realçar Regras das Células → Texto que Contém</strong>
+                    para destacar automaticamente os resultados gerados pela função SE.</p>
+            </blockquote>
+        </section>
+
+        <section class="aula-secao">
+            <h2>Exemplo prático de uso combinado</h2>
+              <div class="video-placeholder">
+                <img src="../img/aula06_combinando.png" alt="Exemplo de funções SOMA e MÉDIA no Excel">
+            </div>
+            <p>Imagine uma planilha de controle de notas com colunas de aluno, nota final e situação. O caminho seria:
+            </p>
+            <ol>
+                <li>Na coluna <strong>Situação</strong>, usar <code>=SE(NotaFinal&gt;=6; "Aprovado"; "Reprovado")</code>
+                    para gerar o resultado automaticamente;</li>
+                <li>Selecionar a coluna situação e aplicar Formatação Condicional do tipo <strong>Texto que
+                        Contém</strong>, com verde para “Aprovado” e vermelho para “Reprovado”;</li>
+                <li>Opcionalmente, aplicar uma <strong>Escala de Cor</strong> na coluna Nota Final para visualizar a
+                    distância em relação à média.</li>
+            </ol>
+            <p>Em poucos passos, a planilha deixa de apenas armazenar dados e passa a interpretá-los e sinalizá-los
+                sozinha.</p>
+        </section>
+
+        <footer class="aula-footer">
+            <button id="btn-concluir" class="btn-concluir">Realizar Quiz</button>
+            <p>&copy; 2026 Curso de Informática básica. Todos os direitos reservados.</p>
+        </footer>
+    </div>
+
+    <div id="quiz-modal" class="quiz-modal-overlay" aria-modal="true" role="dialog" aria-labelledby="quiz-title">
+        <div class="quiz-modal-card">
+            <h2 id="quiz-title">Pergunta de Verificação</h2>
+            <p>Responda corretamente para marcar a aula como concluída e ganhar 1 ponto.</p>
+            <div id="quiz-question" class="quiz-question"></div>
+            <div id="quiz-options" class="quiz-options"></div>
+            <div class="quiz-actions">
+                <button id="quiz-submit" class="quiz-btn submit" type="button" disabled>Enviar resposta</button>
+                <button id="quiz-close" class="quiz-btn cancel" type="button">Cancelar</button>
+            </div>
+            <div id="quiz-feedback" class="quiz-feedback" role="status"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/supabase.js"></script>
+    <script src="../js/quiz.js"></script>
+    <script src="../js/navegacao-aulas.js"></script>
+    <script>
+        initQuizForAula('Excel', 6);
+    </script>
+</body>
+
+</html>

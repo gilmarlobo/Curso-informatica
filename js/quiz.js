@@ -283,6 +283,16 @@ const quizDatabase = {
                 'Para criar novas pastas de trabalho'
             ],
             indiceCorreto: 2
+        },
+        6: {
+            pergunta: 'Qual função do Excel permite criar decisões com base em uma condição?',
+            opcoes: [
+                '=MÉDIA()',
+                '=SE()',
+                '=SOMA()',
+                '=MÁXIMO()'
+            ],
+            indiceCorreto: 1
         }
     }
 };

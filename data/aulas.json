@@ -213,6 +213,13 @@
           "descricao": "Aprenda a transformar dados em tabelas e a usar filtros para localizar informações com rapidez.",
           "link": "aulas/aula05_excel.html",
           "externo": false
+        },
+        {
+          "numero": 6,
+          "titulo": "Formatação condicional e a função SE",
+          "descricao": "Entenda como destacar dados automaticamente e ensinar o Excel a tomar decisões com a função SE.",
+          "link": "aulas/aula06_excel.html",
+          "externo": false
         }
       ]
     },

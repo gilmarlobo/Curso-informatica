@@ -26,7 +26,8 @@
         'aula02_excel.html': 'aula03_excel.html',
         'aula03_excel.html': 'aula04_excel.html',
         'aula04_excel.html': 'aula05_excel.html',
-        'aula05_excel.html': null
+        'aula05_excel.html': 'aula06_excel.html',
+        'aula06_excel.html': null
     };
 
     function getCurrentLessonFile() {
