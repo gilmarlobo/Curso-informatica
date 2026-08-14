@@ -225,11 +225,69 @@
     },
     {
       "nome": "Internet",
-      "aulas": []
+      "aulas": [
+        {
+          "numero": 1,
+          "titulo": "História da Web",
+          "descricao": "Entenda como a internet e a web surgiram e por que a World Wide Web mudou o mundo digital.",
+          "link": "aulas/aula01_internet_historia_web.html",
+          "externo": false
+        },
+        {
+          "numero": 2,
+          "titulo": "Páginas Web, Serviços e Streaming",
+          "descricao": "Aprenda a diferenciar páginas, serviços web e conteúdo em streaming na prática do dia a dia.",
+          "link": "aulas/aula02_internet_paginas_servicos_streaming.html",
+          "externo": false
+        },
+        {
+          "numero": 3,
+          "titulo": "Computação em Nuvem e Google Drive",
+          "descricao": "Descubra como arquivos, sincronização e colaboração funcionam na nuvem, com o Google Drive como exemplo.",
+          "link": "aulas/aula03_internet_nuvem_google_drive.html",
+          "externo": false
+        },
+        {
+          "numero": 4,
+          "titulo": "Cuidados Online e Segurança",
+          "descricao": "Conheça os principais golpes, vírus e boas práticas para navegar com mais segurança na internet.",
+          "link": "aulas/aula04_internet_cuidados_online_seguranca.html",
+          "externo": false
+        }
+      ]
     },
     {
       "nome": "IAs",
-      "aulas": []
+      "aulas": [
+        {
+          "numero": 1,
+          "titulo": "Origem da IA e IAs Generativas",
+          "descricao": "Entenda a origem da inteligência artificial e por que a IA generativa se tornou tão relevante agora.",
+          "link": "aulas/aula01_ia_origem_ia_generativa.html",
+          "externo": false
+        },
+        {
+          "numero": 2,
+          "titulo": "O que é um Prompt",
+          "descricao": "Aprenda a formular instruções claras que melhoram a qualidade das respostas das inteligências artificiais.",
+          "link": "aulas/aula02_ia_o_que_e_prompt.html",
+          "externo": false
+        },
+        {
+          "numero": 3,
+          "titulo": "IAs e Geração de Arquivos",
+          "descricao": "Veja como a IA pode criar textos, planilhas, apresentações e imagens e analisar arquivos enviados por você.",
+          "link": "aulas/aula03_ia_geracao_arquivos.html",
+          "externo": false
+        },
+        {
+          "numero": 4,
+          "titulo": "Projeções e Preparação para o Futuro",
+          "descricao": "Analise como a IA pode transformar tarefas, profissões e habilidades humanas nos próximos anos.",
+          "link": "aulas/aula04_ia_projecoes_futuro.html",
+          "externo": false
+        }
+      ]
     },
     {
       "nome": "Meus Arquivos",

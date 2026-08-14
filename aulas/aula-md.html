@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula em Markdown</title>
+    <link rel="stylesheet" href="../css/aulas.css">
+</head>
+
+<body>
+    <div class="aula-container">
+        <header class="aula-header">
+            <button onclick="window.history.back()" class="btn-voltar">
+                &larr; Voltar para as Aulas
+            </button>
+            <h1 id="aula-titulo">Carregando aula...</h1>
+        </header>
+
+        <main id="aula-conteudo" class="aula-conteudo"></main>
+
+        <footer class="aula-footer">
+            <button id="btn-concluir" class="btn-concluir">Realizar Quiz</button>
+            <p>&copy; 2026 Curso de Informática básica. Todos os direitos reservados.</p>
+        </footer>
+    </div>
+
+    <div id="quiz-modal" class="quiz-modal-overlay" aria-modal="true" role="dialog" aria-labelledby="quiz-title">
+        <div class="quiz-modal-card">
+            <h2 id="quiz-title">Pergunta de Verificação</h2>
+            <p>Responda corretamente para marcar a aula como concluída e ganhar 1 ponto.</p>
+            <div id="quiz-question" class="quiz-question"></div>
+            <div id="quiz-options" class="quiz-options"></div>
+            <div class="quiz-actions">
+                <button id="quiz-submit" class="quiz-btn submit" type="button" disabled>Enviar resposta</button>
+                <button id="quiz-close" class="quiz-btn cancel" type="button">Cancelar</button>
+            </div>
+            <div id="quiz-feedback" class="quiz-feedback" role="status"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/supabase.js"></script>
+    <script src="../js/quiz.js"></script>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const modulo = urlParams.get('modulo') || 'Internet';
+        const aulaNumero = Number(urlParams.get('aula') || 1);
+        const aulaTitulo = urlParams.get('titulo') || `Aula ${aulaNumero}`;
+        const arquivoMd = urlParams.get('arquivo') || '../md/internet_aula01_historia_web.md';
+
+        document.title = `${modulo} - Aula ${aulaNumero} - ${aulaTitulo}`;
+        document.getElementById('aula-titulo').textContent = `${modulo} - Aula ${aulaNumero}: ${aulaTitulo}`;
+
+        function escapeHtml(value) {
+            return String(value)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/\"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
+        function renderInlineMarkdown(text) {
+            let html = escapeHtml(text);
+            html = html.replace(/!\[(.*?)\]\((https?:\/\/[^\s)]+|\.\/[^\s)]+|\.\.\/[^\s)]+|[^\s)]+)\)/g, '<img src="$2" alt="$1">');
+            html = html.replace(/\[(.*?)\]\((https?:\/\/[^\s)]+|\.\/[^\s)]+|\.\.\/[^\s)]+|[^\s)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+            html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+            html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
+            html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+            return html;
+        }
+
+        function renderMarkdown(mdText) {
+            const lines = mdText.split(/\r?\n/);
+            let html = '';
+            let inList = false;
+            let listType = null;
+            let inTable = false;
+            let tableRows = [];
+
+            const flushList = () => {
+                if (!inList) return;
+                html += `</${listType}>`;
+                inList = false;
+                listType = null;
+            };
+
+            const flushTable = () => {
+                if (!inTable || tableRows.length === 0) return;
+
+                const rows = tableRows.map(row => row.split('|').map(cell => cell.trim()));
+                const header = rows[0];
+                const body = rows.slice(1);
+
+                html += '<table><thead><tr>' + header.map(cell => `<th>${renderInlineMarkdown(cell)}</th>`).join('') + '</tr></thead><tbody>';
+                body.forEach(row => {
+                    if (row.length === header.length) {
+                        html += '<tr>' + row.map(cell => `<td>${renderInlineMarkdown(cell)}</td>`).join('') + '</tr>';
+                    }
+                });
+                html += '</tbody></table>';
+                inTable = false;
+                tableRows = [];
+            };
+
+            lines.forEach((line) => {
+                const trimmed = line.trim();
+
+                if (!trimmed) {
+                    flushList();
+                    flushTable();
+                    return;
+                }
+
+                if (/^\s*\|.*\|\s*$/.test(line)) {
+                    flushList();
+                    if (!inTable) {
+                        inTable = true;
+                        tableRows = [];
+                    }
+                    tableRows.push(line.trim());
+                    return;
+                }
+
+                if (inTable && !/^\s*\|.*\|\s*$/.test(line)) {
+                    flushTable();
+                }
+
+                if (/^###\s+/.test(line)) {
+                    flushList();
+                    html += `<h3>${renderInlineMarkdown(trimmed.replace(/^###\s+/, ''))}</h3>`;
+                    return;
+                }
+
+                if (/^##\s+/.test(line)) {
+                    flushList();
+                    html += `<h2>${renderInlineMarkdown(trimmed.replace(/^##\s+/, ''))}</h2>`;
+                    return;
+                }
+
+                if (/^#\s+/.test(line)) {
+                    flushList();
+                    html += `<h1>${renderInlineMarkdown(trimmed.replace(/^#\s+/, ''))}</h1>`;
+                    return;
+                }
+
+                if (/^>\s?/.test(line)) {
+                    flushList();
+                    const quoteText = trimmed.replace(/^>\s?/, '');
+                    html += `<blockquote>${renderInlineMarkdown(quoteText)}</blockquote>`;
+                    return;
+                }
+
+                if (/^\s*[-*]\s+/.test(line)) {
+                    if (!inList || listType !== 'ul') {
+                        flushList();
+                        html += '<ul>';
+                        inList = true;
+                        listType = 'ul';
+                    }
+                    html += `<li>${renderInlineMarkdown(trimmed.replace(/^\s*[-*]\s+/, ''))}</li>`;
+                    return;
+                }
+
+                if (/^\s*\d+\.\s+/.test(line)) {
+                    if (!inList || listType !== 'ol') {
+                        flushList();
+                        html += '<ol>';
+                        inList = true;
+                        listType = 'ol';
+                    }
+                    html += `<li>${renderInlineMarkdown(trimmed.replace(/^\s*\d+\.\s+/, ''))}</li>`;
+                    return;
+                }
+
+                flushList();
+                html += `<p>${renderInlineMarkdown(trimmed)}</p>`;
+            });
+
+            flushList();
+            flushTable();
+
+            return html;
+        }
+
+        async function carregarAulaMarkdown() {
+            try {
+                const response = await fetch(arquivoMd, { cache: 'no-store' });
+                if (!response.ok) {
+                    throw new Error(`Não foi possível carregar a aula: ${response.status}`);
+                }
+
+                const markdown = await response.text();
+                const conteudo = document.getElementById('aula-conteudo');
+                conteudo.innerHTML = renderMarkdown(markdown);
+
+                const tituloElemento = document.getElementById('aula-titulo');
+                tituloElemento.textContent = `${modulo} - Aula ${aulaNumero}: ${aulaTitulo}`;
+            } catch (error) {
+                document.getElementById('aula-conteudo').innerHTML = `
+                    <p>Não foi possível carregar esta aula.</p>
+                    <p>${escapeHtml(error.message)}</p>
+                `;
+            }
+        }
+
+        carregarAulaMarkdown();
+        initQuizForAula(modulo, aulaNumero);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 02 - O que é um Prompt</title>
+    <link rel="stylesheet" href="../css/aulas.css">
+</head>
+
+<body>
+    <div class="aula-container">
+        <header class="aula-header">
+            <button onclick="window.history.back()" class="btn-voltar">
+                &larr; Voltar para as Aulas
+            </button>
+            <h1>Aula 02: O que é um Prompt</h1>
+        </header>
+
+        <section class="aula-secao">
+            <h2>O que é, de fato, um prompt</h2>
+            <p><strong>Prompt</strong> é o nome dado a qualquer instrução, pergunta ou pedido que você envia para uma
+                inteligência artificial. Pode ser uma frase simples ("resuma este texto") ou um pedido detalhado, com
+                contexto, exemplos e formato desejado.</p>
+            <p>O prompt é, literalmente, a única forma de comunicação entre você e a IA — é através dele que toda a
+                interação acontece. Por isso, a qualidade da resposta está diretamente ligada à qualidade da pergunta.
+            </p>
+            <blockquote>
+                <p><strong>Curiosidade:</strong> A palavra "prompt", em inglês, já era usada muito antes da IA
+                    generativa existir — em programação, "prompt" é o termo para a linha onde o sistema espera um
+                    comando do usuário digitar (aquela tela preta de comando, por exemplo). A IA generativa simplesmente
+                    herdou e popularizou esse termo técnico para o público em geral.</p>
+            </blockquote>
+        </section>
+
+        <section class="aula-secao">
+            <h2>Por que "engenharia de prompt" virou uma habilidade valorizada</h2>
+            <p>Criar bons prompts se tornou uma habilidade tão relevante que ganhou nome próprio: <strong>prompt
+                    engineering</strong> (engenharia de prompt). Isso não significa que seja necessário saber programar
+                — significa que existe uma lógica estruturada por trás de pedidos que geram respostas melhores, e essa
+                lógica pode ser aprendida e praticada.</p>
+            <blockquote>
+                <p><strong>Dica:</strong> Pense num prompt como as instruções que você daria para um estagiário novo,
+                    muito inteligente e muito bem informado, mas que não tem nenhum contexto sobre você, sua empresa ou
+                    sua intenção específica. Quanto mais claro e contextualizado for o pedido, melhor será o resultado —
+                    exatamente como aconteceria com uma pessoa.</p>
+            </blockquote>
+        </section>
+
+        <section class="aula-secao">
+            <h2>Técnica 1: seja específico, não genérico</h2>
+            <p>Pedidos vagos geram respostas vagas. Compare os dois exemplos:</p>
+            <ul>
+                <li><strong>❌</strong> "Fale sobre marketing."</li>
+                <li><strong>✅</strong> "Explique, de forma simples, três estratégias de marketing digital para uma
+                    pequena papelaria que quer atrair mais clientes através do Instagram."</li>
+            </ul>
+            <p>O segundo prompt define o assunto, o formato, o público e o objetivo — dando à IA muito mais direção para
+                gerar uma resposta útil.</p>
+        </section>
+
+        <section class="aula-secao">
+            <h2>Técnica 2: dê contexto sobre quem você é e o que precisa</h2>
+            <p>A IA não sabe, por padrão, quem está falando com ela, a menos que essa informação seja fornecida no
+                próprio prompt (ou já tenha sido informada em uma conversa anterior). Contar seu papel, seu nível de
+                conhecimento sobre o assunto e a finalidade do pedido muda completamente a resposta.</p>
+            <blockquote>
+                <p><strong>Curiosidade:</strong> Esse princípio tem um nome dentro da engenharia de prompt:
+                    <strong>definição de persona e contexto</strong>. Pedir "explique fotossíntese" para um professor de
+                    biologia universitário gera uma resposta completamente diferente de pedir "explique fotossíntese
+                    para eu ensinar a uma turma de 9º ano" — mesmo sendo, tecnicamente, a mesma pergunta de base.</p>
+            </blockquote>
+        </section>
+
+        <section class="aula-secao">
+            <h2>Técnica 3: especifique o formato da resposta</h2>
+            <p>Se você precisa de uma lista, uma tabela, um texto corrido, um roteiro de aula ou um e-mail formal,
+                <strong>diga isso explicitamente</strong>. A IA não adivinha o formato ideal — ela responde da forma
+                mais provável com base no que foi pedido, e detalhar o formato evita retrabalho.</p>
+            <blockquote>
+                <p><strong>Dica:</strong> Frases como "responda em tópicos", "faça uma tabela comparando X e Y",
+                    "escreva como se fosse um e-mail formal" ou "limite a resposta a 200 palavras" são pequenos ajustes
+                    que fazem uma diferença enorme no resultado final.</p>
+            </blockquote>
+        </section>
+
+        <section class="aula-secao">
+            <h2>Técnica 4: use exemplos para guiar o estilo</h2>
+            <p>Quando você já tem um modelo do que espera — um texto anterior, um estilo de escrita específico, um
+                exemplo de tabela — compartilhar isso com a IA ajuda muito mais do que apenas descrever o que você quer
+                com palavras.</p>
+            <p>Essa técnica é chamada de <strong>aprendizado por exemplo</strong> (<em>few-shot prompting</em>): em vez
+                de explicar todas as regras, você mostra um ou dois exemplos do resultado esperado, e a IA identifica o
+                padrão sozinha.</p>
+            <blockquote>
+                <p><strong>Curiosidade:</strong> Esse mesmo princípio é usado há décadas na educação, chamado de
+                    "modelagem" — mostrar um exemplo resolvido antes de pedir que o aluno resolva outro parecido
+                    sozinho. A lógica por trás de um bom prompt com exemplos não é tão diferente da lógica de uma boa
+                    aula.</p>
+            </blockquote>
+        </section>
+
+        <section class="aula-secao">
+            <h2>Técnica 5: refine em vez de recomeçar do zero</h2>
+            <p>Um erro comum é tratar cada resposta como definitiva. Na prática, a melhor forma de usar uma IA
+                generativa é como uma <strong>conversa</strong>, e não como uma pesquisa de resultado único. Se a
+                resposta não ficou boa, ajuste o pedido, aponte o que faltou, peça para mudar o tom, encurtar,
+                aprofundar ou reformular — a IA usa o contexto da conversa inteira para melhorar a resposta seguinte.
+            </p>
+            <blockquote>
+                <p><strong>Dica:</strong> Frases como "deixe mais informal", "isso ficou bom, mas encurte pela metade"
+                    ou "faça de novo, mas sem usar essa palavra" costumam gerar resultados muito melhores do que
+                    reescrever o prompt inteiro do zero a cada tentativa.</p>
+            </blockquote>
+        </section>
+
+        <section class="aula-secao">
+            <h2>Um exemplo prático de evolução de prompt</h2>
+            <p><strong>Prompt fraco:</strong> "Cria um texto sobre educação."</p>
+            <p><strong>Prompt melhorado:</strong> "Escreva um texto de aproximadamente 300 palavras sobre a importância
+                da educação de jovens e adultos (EJA) no Brasil, com linguagem acessível, para publicar como post
+                educativo em uma rede social."</p>
+            <p>Note como o segundo exemplo resolve, de uma só vez, várias das técnicas apresentadas: tema específico,
+                tamanho definido, público-alvo, tom de linguagem e finalidade do texto.</p>
+        </section>
+
+        <footer class="aula-footer">
+            <button id="btn-concluir" class="btn-concluir">Realizar Quiz</button>
+            <p>&copy; 2026 Curso de Informática básica. Todos os direitos reservados.</p>
+        </footer>
+    </div>
+
+    <div id="quiz-modal" class="quiz-modal-overlay" aria-modal="true" role="dialog" aria-labelledby="quiz-title">
+        <div class="quiz-modal-card">
+            <h2 id="quiz-title">Pergunta de Verificação</h2>
+            <p>Responda corretamente para marcar a aula como concluída e ganhar 1 ponto.</p>
+            <div id="quiz-question" class="quiz-question"></div>
+            <div id="quiz-options" class="quiz-options"></div>
+            <div class="quiz-actions">
+                <button id="quiz-submit" class="quiz-btn submit" type="button" disabled>Enviar resposta</button>
+                <button id="quiz-close" class="quiz-btn cancel" type="button">Cancelar</button>
+            </div>
+            <div id="quiz-feedback" class="quiz-feedback" role="status"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/supabase.js"></script>
+    <script src="../js/quiz.js"></script>
+    <script>
+        initQuizForAula('IAs', 2);
+    </script>
+</body>
+
+</html>

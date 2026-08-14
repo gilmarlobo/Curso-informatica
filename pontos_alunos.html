@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Consulta de Pontos - Supabase</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 20px
+        }
+
+        label {
+            display: block;
+            margin-top: 8px
+        }
+
+        input,
+        button,
+        select {
+            padding: 6px;
+            margin-top: 4px
+        }
+
+        table {
+            border-collapse: collapse;
+            margin-top: 12px;
+            width: 100%;
+            max-width: 800px
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left
+        }
+
+        th {
+            background: #f2f2f2
+        }
+
+        #status {
+            margin-top: 10px;
+            color: #444
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Consulta de Pontos (Supabase)</h1>
+    <p>Esta página é standalone para consultar rapidamente o nome e pontos dos alunos sem entrar no painel do Supabase.
+    </p>
+
+    <label>Tabela (ex: <em>alunos</em>)
+        <input id="tableName" value="alunos" />
+    </label>
+    <label>Coluna nome (ex: <em>nome</em>)
+        <input id="nameCol" value="nome" />
+    </label>
+    <label>Coluna pontos (ex: <em>pontos</em>)
+        <input id="pointsCol" value="pontos" />
+    </label>
+    <button id="fetchBtn">Buscar</button>
+    <div id="status"></div>
+
+    <table id="results" aria-live="polite">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Pontos</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <!-- Supabase client CDN (for global `supabase`) -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js/dist/umd/supabase.min.js"></script>
+    <!-- Reutiliza sua configuração existente em js/supabase.js -->
+    <script src="js/supabase.js"></script>
+
+    <script>
+        const statusEl = document.getElementById('status');
+        const resultsTbody = document.querySelector('#results tbody');
+
+        function detectNameColumn(row) {
+            const candidates = ['nome', 'name', 'full_name', 'fullname', 'nome_completo', 'aluno'];
+            for (const c of candidates) if (c in row) return c;
+            // fallback: first string column
+            for (const k of Object.keys(row)) {
+                if (typeof row[k] === 'string') return k;
+            }
+            return Object.keys(row)[0];
+        }
+
+        function detectPointsColumn(rows) {
+            if (!rows || rows.length === 0) return null;
+            const cols = Object.keys(rows[0]);
+            const nameRegex = /(pontos?|pontuacao|pontuação|score|points|total_points|total)/i;
+            for (const c of cols) if (nameRegex.test(c)) return c;
+            // prefer numeric columns
+            const numericCols = [];
+            for (const c of cols) {
+                let numericCount = 0, checked = 0;
+                for (let i = 0; i < Math.min(20, rows.length); i++) {
+                    const v = rows[i][c];
+                    checked++;
+                    if (v === null || v === undefined) continue;
+                    if (typeof v === 'number') numericCount++;
+                    else if (!isNaN(Number(v))) numericCount++;
+                }
+                if (checked > 0 && numericCount / checked > 0.6) numericCols.push(c);
+            }
+            if (numericCols.length > 0) return numericCols[0];
+            return null;
+        }
+
+        function renderSimple(nameCol, pointsCol, rows) {
+            resultsTbody.innerHTML = '';
+            if (!rows || rows.length === 0) return;
+            // sort by points if numeric
+            try {
+                rows.sort((a, b) => {
+                    const A = Number(a[pointsCol]) || 0;
+                    const B = Number(b[pointsCol]) || 0;
+                    return B - A;
+                });
+            } catch (e) { }
+
+            for (const row of rows) {
+                const tr = document.createElement('tr');
+                const tdName = document.createElement('td'); tdName.textContent = row[nameCol] ?? '';
+                const tdPts = document.createElement('td'); tdPts.textContent = row[pointsCol] ?? '';
+                tr.appendChild(tdName); tr.appendChild(tdPts);
+                resultsTbody.appendChild(tr);
+            }
+        }
+
+        function renderFullTable(rows) {
+            resultsTbody.innerHTML = '';
+            if (!rows || rows.length === 0) return;
+            // create header row in tbody first (we only have tbody in markup)
+            const headerTr = document.createElement('tr');
+            const cols = Object.keys(rows[0]);
+            for (const c of cols) {
+                const th = document.createElement('th'); th.textContent = c; headerTr.appendChild(th);
+            }
+            // insert header cells into a thead fallback
+            const thead = document.querySelector('#results thead');
+            thead.innerHTML = '';
+            thead.appendChild(headerTr);
+
+            for (const row of rows) {
+                const tr = document.createElement('tr');
+                for (const c of cols) {
+                    const td = document.createElement('td'); td.textContent = row[c] ?? '';
+                    tr.appendChild(td);
+                }
+                resultsTbody.appendChild(tr);
+            }
+        }
+
+        async function loadAll() {
+            const table = (document.getElementById('tableName')?.value || 'alunos').trim();
+            const manualName = (document.getElementById('nameCol')?.value || '').trim();
+            const manualPoints = (document.getElementById('pointsCol')?.value || '').trim();
+            if (!table) { statusEl.textContent = 'Preencha o nome da tabela.'; return; }
+            statusEl.textContent = 'Buscando...';
+            resultsTbody.innerHTML = '';
+
+            try {
+                const sup = window._supabase;
+                if (!sup) throw new Error('Cliente Supabase não encontrado. Verifique js/supabase.js');
+
+                // buscar todas as colunas para detectar nomes
+                const { data, error } = await sup.from(table).select('*').limit(1000);
+                if (error) throw error;
+                if (!data || data.length === 0) { statusEl.textContent = 'Nenhum registro encontrado.'; return; }
+
+                const nameCol = manualName || detectNameColumn(data[0]);
+                let pointsCol = manualPoints || detectPointsColumn(data);
+
+                if (!pointsCol) {
+                    statusEl.textContent = 'Coluna de pontos não detectada automaticamente. Informe o nome da coluna de pontos e clique em Buscar.';
+                    // render full table so you can inspecionar as colunas
+                    renderFullTable(data);
+                    return;
+                }
+
+                // re-render simple header (Nome / Pontos)
+                const thead = document.querySelector('#results thead');
+                thead.innerHTML = '<tr><th>Nome (' + nameCol + ')</th><th>Pontos (' + pointsCol + ')</th></tr>';
+                renderSimple(nameCol, pointsCol, data);
+                statusEl.textContent = `Mostrando ${data.length} registros. (coluna de pontos: ${pointsCol})`;
+            } catch (err) {
+                console.error(err);
+                statusEl.textContent = 'Erro: ' + (err.message || err);
+            }
+        }
+
+        document.getElementById('fetchBtn').addEventListener('click', loadAll);
+        window.addEventListener('DOMContentLoaded', loadAll);
+    </script>
+</body>
+
+</html>

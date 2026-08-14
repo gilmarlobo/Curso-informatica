@@ -294,6 +294,90 @@ const quizDatabase = {
             ],
             indiceCorreto: 1
         }
+    },
+    'Internet': {
+        1: {
+            pergunta: 'Qual projeto foi criado em 1969 e é considerado o início da Internet?',
+            opcoes: [
+                'Mosaic',
+                'ARPANET',
+                'Google Drive',
+                'Netscape'
+            ],
+            indiceCorreto: 1
+        },
+        2: {
+            pergunta: 'Qual é a diferença principal entre Internet e Web?',
+            opcoes: [
+                'Internet é a estrutura física e a Web é um serviço que roda sobre ela',
+                'Web é a estrutura física e a Internet é o navegador',
+                'Ambos são a mesma coisa sem nenhuma diferença',
+                'Internet só existe em celulares e Web só em computadores'
+            ],
+            indiceCorreto: 0
+        },
+        3: {
+            pergunta: 'Qual é a principal função do Google Drive no contexto da computação em nuvem?',
+            opcoes: [
+                'Editar imagens em um computador local',
+                'Guardar, sincronizar e compartilhar arquivos em servidores remotos',
+                'Trocar mensagens entre usuários sem internet',
+                'Instalar programas diretamente no disco rígido'
+            ],
+            indiceCorreto: 1
+        },
+        4: {
+            pergunta: 'Qual ação ajuda mais a reduzir travamentos de streaming em uma internet lenta?',
+            opcoes: [
+                'Fechar o navegador e reiniciar o computador',
+                'Reduzir a qualidade do vídeo',
+                'Excluir todos os arquivos da nuvem',
+                'Aumentar a resolução da tela'
+            ],
+            indiceCorreto: 1
+        }
+    },
+    'IAs': {
+        1: {
+            pergunta: 'Quem propôs o teste que ficou conhecido como Teste de Turing?',
+            opcoes: [
+                'Tim Berners-Lee',
+                'Alan Turing',
+                'Steve Jobs',
+                'Bill Gates'
+            ],
+            indiceCorreto: 1
+        },
+        2: {
+            pergunta: 'O que é um prompt na interação com uma IA?',
+            opcoes: [
+                'Um arquivo de instalação do sistema',
+                'Uma instrução, pergunta ou pedido enviado para a IA',
+                'O nome do navegador utilizado para acessar a internet',
+                'Um tipo de malware que ataca computadores'
+            ],
+            indiceCorreto: 1
+        },
+        3: {
+            pergunta: 'Qual das opções melhor descreve uma IA generativa?',
+            opcoes: [
+                'Uma IA que só lê e-mails',
+                'Uma IA que cria novos textos, imagens, áudios ou outros conteúdos',
+                'Um programa que bloqueia anúncios',
+                'Um sistema utilizado apenas para jogos'
+            ],
+            indiceCorreto: 1
+        },
+        4: {
+            pergunta: 'Qual habilidade humana continua muito importante mesmo com o uso de IA?',
+            opcoes: [
+                'Pensamento crítico e avaliação do resultado',
+                'Copiar exatamente o que a IA escreveu',
+                'Desligar o computador para usar menos energia',
+                'Não aprender nada além do que a IA diz'
+            ],
+            indiceCorreto: 0
+        }
     }
 };
 
